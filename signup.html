@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <title>회원가입</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1z내jPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
+
+    <style>
+        main>.container {
+            padding: 60px 15px 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @font-face {
+            font-family: 'NanumSquareRound';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            font-family: 'NanumSquareRound';
+        }
+
+
+        body {
+            text-align: center;
+        }
+
+        #signupLogo {
+            color: black;
+            font-size: 3.0rem;
+            margin-bottom: 30px;
+        }
+
+        .signupBox {
+            background-color: white;
+            width: 50%;
+            height: 50%;
+            text-align: center;
+            border: 1px solid black;
+            margin-top: 100px auto;
+            border-radius: 30px;
+            padding-bottom: 30px;
+        }
+
+        .input-type {
+            color: black;
+            font-size: 1.0rem;
+            font-weight: 700;
+            border: 2px solid white;
+            box-shadow: 1px 1px 4px rgb(165, 165, 165);
+            display: inline-block;
+            width: 270px;
+            height: 35px;
+            margin-top: 8px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            padding: 3px 5px 3px 15px;
+        }
+
+        #idpara,
+        #pwpara,
+        #emailpara,
+        #nicknamepara {
+            color: black;
+            font-weight: 700;
+            margin-bottom: 0px;
+            margin-right: 200px;
+            padding-left: 60PX;
+            font-size: 1.1rem;
+        }
+
+        #emailpara {
+            margin-right: 260px;
+        }
+
+        #pwpara,
+        #nicknamepara {
+            margin-right: 230px;
+        }
+
+        #policyagree {
+            color: black;
+            background-color: white;
+            width: 20px;
+            height: 20px;
+            border: none;
+            box-shadow: none;
+            vertical-align: bottom;
+            margin-bottom: 0;
+        }
+
+        #policypara {
+            font-weight: 700;
+            color: black;
+        }
+
+        #signupSubmitBtn {
+            background-color: gray;
+            width: 270px;
+            color: black;
+            font-weight: 700;
+            font-size: 1.0rem;
+            vertical-align: middle;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border: 0.2px solid rgb(158, 158, 158);
+            border-radius: 15px;
+            box-shadow: 1px 1px 4px rgb(165, 165, 165);
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #orpara {
+            color: rgb(216, 216, 216);
+            font-weight: 700;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        #loginpara,
+        #gologin {
+            margin-top: 10px;
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: rgb(143, 143, 143);
+            font-weight: 700;
+        }
+
+        #gologin {
+            color: black;
+        }
+
+        #link {
+            text-decoration-line: none;
+            color: black
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><strong>For me</strong></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active" aria-current="page" href="#">제품소개</a>
+                            <div class="dropdown-content">
+                                <a href="/pad">일회용 월경대</a>
+                                <a href="/cpad">면 월경대</a>
+                                <a href="/cup">월경컵</a>
+                                <a href="/tampon">탐폰</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active" aria-current="page" href="#">자유게시판</a>
+                            <div class="dropdown-content">
+                                <a href="#">제품추천</a>
+                                <a href="#">For me에게 바란다</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login">로그인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="signup">회원가입</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mypage">마이페이지</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex mb-2 mb-md-0">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+        <br><br><br>
+        <script>
+            function check_signup() {
+                const emailReg = document.getElementById("email").value;
+                const passwordReg = document.getElementById("password").value;
+                const passwordCheckReg = document.getElementById("passwordCheck").value;
+                const nicknameReg = document.getElementById("nickname").value;
+                const policyagree = document.getElementById("policyagree").checked;
+
+                if (policyagree === false) {
+                    return alert('SEED 정책에 동의하셔야 합니다.');
+                }
+                const email_check = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+                if (!emailReg.match(email_check)) {
+                    return alert('올바른 이메일 형식을 입력하세요.');
+                }
+                const password_check = /^[a-z0-9]{3,19}$/g;
+                if (!password_check.test(passwordReg)) {
+                    return alert('비밀번호는 4자 이상 20자 이하여야 합니다.')
+                } else if (passwordReg !== passwordCheckReg) {
+                    return alert('비밀번호가 일치하지ㅌ 않습니다.')
+                }
+                if (nicknameReg.length === 0 || nicknameReg.length < 2) {
+                    return alert('이름은 2글자 이상이어야 합니다.');
+                }
+            }
+        </script>
+        <div class="container">
+            <div className="signupBox">
+                <p id="signupLogo"><strong>Sign up</strong></p>
+                <form className="inputField">
+                    <p id="emailpara">Email</p>
+                    <input type="email" class="input-type" id="email" placeholder="email" />
+                    <br />
+                    <p id="pwpara">Password</p>
+                    <input type="password" class="input-type" id="password" placeholder="password" />
+                    <br />
+                    <input type="password" class="input-type" id="passwordCheck" placeholder="password confirm" />
+                    <p id="nicknamepara">Nickname</p>
+                    <input class="input-type" id="nickname" placeholder="nickname" />
+                    <br />
+                    <input type="checkbox" id="policyagree" /> <span id="policypara"> For me 정책에 동의합니다. </span><br>
+                    <button type="submit" id="signupSubmitBtn" onClick=check_signup()>Sign up</button>
+                    <p id="orpara">─────────────　OR　─────────────</p>
+                    <p id="loginpara">Already have a account?<a href="login" id="link">　Log in</a></p>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
