@@ -10,9 +10,8 @@ router.get('/', function (request, response) {
     <div class="container">
         <div class="row">
             <center>
-                <h1 class="mt-5"><b>For me</b> : 나를 위해 </h1><br>
-                <h2>한 달에 한 번, 나를 위한 선택</h2>
-                <img src='images/main1.png' alt="메인 사진" style = "display : block; width = 400px;" ><br>
+            <br><br>
+                <img src='images/main1.png'  width="600px" alt="메인 사진" ><br><br>
                 <button type="button" class="btn btn-secondary">종류별 장단점</button>
             </center>
         </div>
@@ -32,10 +31,14 @@ router.get('/', function (request, response) {
 
     <div class="container">
         <center>
+            <div>
+                
+            </div>
         </center>
         <br><br>
     </div>
     </main>`;
+    
     var html = template.HTML(title, head, body);
     response.send(html);
 });
