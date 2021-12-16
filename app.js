@@ -9,6 +9,7 @@ const cpadRouter = require('./routes/store/cpad.js');
 const cupRouter = require('./routes/store/cup.js');
 const padRouter = require('./routes/store/pad.js');
 const tamponRouter = require('./routes/store/tampon.js');
+const meritRouter = require('./routes/store/merit.js');
 
 const express = require('express');
 const app = express();
@@ -23,6 +24,7 @@ app.get('/store/cpad', cpadRouter);
 app.get('/store/cup', cupRouter);
 app.get('/store/pad', padRouter);
 app.get('/store/tampon', tamponRouter);
+app.get('/store/merit', meritRouter);
 
 
 
