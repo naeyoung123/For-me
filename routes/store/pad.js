@@ -6,17 +6,6 @@ router.get('/store/pad', function (request, response) {
     var title = '일회용월경대';
     var head = `
     <style>
-    @font-face {
-        font-family: 'NanumSquareRound';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    * {
-        font-family: 'NanumSquareRound';
-    }
-
     .box{
         float: left;
         border: 1px solid black;
@@ -38,7 +27,7 @@ router.get('/store/pad', function (request, response) {
     <div class="container">
         <div class="row">
             <center> 
-            <img src='/images/pad.png' alt="일회용 월경대" width = "750px">
+            <img src='/images/pad.png' alt="면 월경대" width = "750px">
             </center>
         </div>
         <div class="content">

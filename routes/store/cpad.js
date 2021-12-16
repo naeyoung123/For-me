@@ -6,17 +6,6 @@ router.get('/store/cpad', function (request, response) {
     var title = '면월경대';
     var head = `
     <style>
-    @font-face {
-        font-family: 'NanumSquareRound';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    * {
-        font-family: 'NanumSquareRound';
-    }
-
     .box{
         float: left;
         border: 1px solid black;
