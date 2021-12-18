@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const url = require('url');
 const path = require('path');
+
 const mainRouter = require('./routes/main.js');
 const loginRouter = require('./routes/login.js');
 const signupRouter = require('./routes/signup.js');
@@ -10,6 +11,16 @@ const cupRouter = require('./routes/store/cup.js');
 const padRouter = require('./routes/store/pad.js');
 const tamponRouter = require('./routes/store/tampon.js');
 const meritRouter = require('./routes/store/merit.js');
+
+const recommendationRouter = require('./routes/community/main_rec.js');
+const createRecRouter = require('./routes/community/create_rec.js');
+const createRecProcessRouter = require('./routes/community/create_rec_process.js');
+const recommendationPageRouter = require('./routes/community/page_rec.js');
+
+const requirementRouter = require('./routes/community/main_req.js');
+const createReqRouter = require('./routes/community/create_req.js');
+const createReqProcessRouter = require('./routes/community/create_req_process.js');
+const requirementPageRouter = require('./routes/community/page_req.js');
 
 const express = require('express');
 const app = express();
@@ -26,6 +37,15 @@ app.get('/store/pad', padRouter);
 app.get('/store/tampon', tamponRouter);
 app.get('/store/merit', meritRouter);
 
+app.get('/community/recommendation', recommendationRouter);
+app.get('/community/recommendation/create', createRecRouter);
+app.post('/community/recommendation/create_process', createRecProcessRouter);
+app.get('/community/recommendation/page/:pageId', recommendationPageRouter);
+
+app.get('/community/requirement', requirementRouter);
+app.get('/community/requirement/create', createReqRouter);
+app.post('/community/requirement/create_process', createReqProcessRouter);
+app.get('/community/requirement/page/:pageId', requirementPageRouter);
 
 
 // var server = http.createServer(function (request, response) {
