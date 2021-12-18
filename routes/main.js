@@ -18,7 +18,7 @@ router.get('/', function (request, response) {
         <br> <br>
     </div>
 
-    <div style="background-color: rgb(248,238,254);">
+    <div style="background-color: #EEEEEE;">
          <center>
             <br><br>
             <a href="recommend">

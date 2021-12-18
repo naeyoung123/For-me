@@ -11,11 +11,7 @@ router.post('/mypage/update_rec_process', function (request, response) {
     });
     request.on('end', function(){
         var post = qs.parse(body);
-        var id_ = post.id;
-        var id = '';
-        for(i = 0; i < id_.length-1; i++){
-            id += id_[i];
-        }
+        var id = post.id;
         var title = post.title;
         var content = post.content;
         db.query(`UPDATE recommendation SET title=?, content=? WHERE id=?`, [title, content, id], function(err, res){
