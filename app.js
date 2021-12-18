@@ -12,9 +12,11 @@ const myPageRouter = require('./routes/mypage/main_mypage.js');
 const mypageRecPageRouter = require('./routes/mypage/page_rec.js');
 const mypageRecUpdateRouter = require('./routes/mypage/update_rec.js');
 const mypageRecUpdateProcessRouter = require('./routes/mypage/update_rec_process.js');
+const mypageRecDeleteProcessRouter = require('./routes/mypage/delete_rec_process.js');
 const mypageReqPageRouter = require('./routes/mypage/page_req.js');
 const mypageReqUpdateRouter = require('./routes/mypage/update_req.js');
 const mypageReqUpdateProcessRouter = require('./routes/mypage/update_req_process.js');
+const mypageReqDeleteProcessRouter = require('./routes/mypage/delete_req_process.js');
 
 const cpadRouter = require('./routes/store/cpad.js');
 const cupRouter = require('./routes/store/cup.js');
@@ -47,9 +49,11 @@ app.get('/mypage', myPageRouter);
 app.get('/mypage/page_rec/page/:pageId', mypageRecPageRouter);
 app.get('/mypage/update/page_rec/:pageId', mypageRecUpdateRouter);
 app.post('/mypage/update_rec_process', mypageRecUpdateProcessRouter);
+app.post('/mypage/delete_rec_process', mypageRecDeleteProcessRouter);
 app.get('/mypage/page_req/page/:pageId', mypageReqPageRouter);
 app.get('/mypage/update/page_req/:pageId', mypageReqUpdateRouter);
 app.post('/mypage/update_req_process', mypageReqUpdateProcessRouter);
+app.post('/mypage/delete_req_process', mypageReqDeleteProcessRouter);
 
 app.get('/store/cpad', cpadRouter);
 app.get('/store/cup', cupRouter);
