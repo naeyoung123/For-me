@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../lib/template.js');
+const db = require('../db.js');
 
 router.get('/signup', function (request, response) {
     var title = '회원가입';
@@ -9,28 +10,23 @@ router.get('/signup', function (request, response) {
         main>.container {
             padding: 60px 15px 0;
         }
-
         @font-face {
             font-family: 'NanumSquareRound';
             src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
-
         * {
             font-family: 'NanumSquareRound';
         }
-
         body {
             text-align: center;
         }
-
         #signupLogo {
             color: black;
             font-size: 3.0rem;
             margin-bottom: 30px;
         }
-
         .signupBox {
             background-color: white;
             width: 50%;
@@ -41,7 +37,6 @@ router.get('/signup', function (request, response) {
             border-radius: 30px;
             padding-bottom: 30px;
         }
-
         .input-type {
             color: black;
             font-size: 1.0rem;
@@ -56,7 +51,6 @@ router.get('/signup', function (request, response) {
             border-radius: 10px;
             padding: 3px 5px 3px 15px;
         }
-
         #idpara,
         #pwpara,
         #emailpara,
@@ -68,16 +62,13 @@ router.get('/signup', function (request, response) {
             padding-left: 60PX;
             font-size: 1.1rem;
         }
-
         #emailpara {
             margin-right: 260px;
         }
-
         #pwpara,
         #nicknamepara {
             margin-right: 230px;
         }
-
         #policyagree {
             color: black;
             background-color: white;
@@ -88,12 +79,10 @@ router.get('/signup', function (request, response) {
             vertical-align: bottom;
             margin-bottom: 0;
         }
-
         #policypara {
             font-weight: 700;
             color: black;
         }
-
         #signupSubmitBtn {
             background-color: gray;
             width: 270px;
@@ -109,14 +98,12 @@ router.get('/signup', function (request, response) {
             cursor: pointer;
             margin-top: 20px;
         }
-
         #orpara {
             color: rgb(216, 216, 216);
             font-weight: 700;
             margin-top: 25px;
             margin-bottom: 25px;
         }
-
         #loginpara,
         #gologin {
             margin-top: 10px;
@@ -125,11 +112,9 @@ router.get('/signup', function (request, response) {
             color: rgb(143, 143, 143);
             font-weight: 700;
         }
-
         #gologin {
             color: black;
         }
-
         #link {
             text-decoration-line: none;
             color: black
@@ -139,46 +124,43 @@ router.get('/signup', function (request, response) {
     var body = `
     <main class="flex-shrink-0">
     <br><br><br>
-    <script>
-        function check_signup() {
-            const emailReg = document.getElementById("email").value;
-            const passwordReg = document.getElementById("password").value;
-            const passwordCheckReg = document.getElementById("passwordCheck").value;
-            const nicknameReg = document.getElementById("nickname").value;
-            const policyagree = document.getElementById("policyagree").checked;
+        <script>
+            function check_signup() {
+                const emailReg = document.getElementById("email").value;
+                const passwordReg = document.getElementById("password").value;
+                const passwordCheckReg = document.getElementById("passwordCheck").value;
+                const nicknameReg = document.getElementById("nickname").value;
+                const policyagree = document.getElementById("policyagree").checked;
 
-            if (policyagree === false) {
-                return alert('SEED 정책에 동의하셔야 합니다.');
+                if (policyagree === false) {
+                    alert('SEED 정책에 동의하셔야 합니다.');
+                }
+                const email_check = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+                if (!emailReg.match(email_check)) {
+                    alert('올바른 이메일 형식을 입력하세요.');
+                }
+                const password_check = /^[a-z0-9]{3,19}$/g;
+                if (!password_check.test(passwordReg)) {
+                    alert('비밀번호는 4자 이상 20자 이하여야 합니다.')
+                } else if (passwordReg !== passwordCheckReg) {
+                    alert('비밀번호가 일치하지 않습니다.')
+                }
+                if (nicknameReg.length === 0 || nicknameReg.length < 2) {
+                    alert('이름은 2글자 이상이어야 합니다.');
+                }
             }
-            const email_check = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-            if (!emailReg.match(email_check)) {
-                return alert('올바른 이메일 형식을 입력하세요.');
-            }
-            const password_check = /^[a-z0-9]{3,19}$/g;
-            if (!password_check.test(passwordReg)) {
-                return alert('비밀번호는 4자 이상 20자 이하여야 합니다.')
-            } else if (passwordReg !== passwordCheckReg) {
-                return alert('비밀번호가 일치하지ㅌ 않습니다.')
-            }
-            if (nicknameReg.length === 0 || nicknameReg.length < 2) {
-                return alert('이름은 2글자 이상이어야 합니다.');
-            }
-        }
-    </script>
-
-    <div class="container">
-        <div className="signupBox">
-            <p id="signupLogo"><strong>Sign up</strong></p>
-            <form className="inputField">
+        </script>
+        <div class="container">
+            <form action="/signup_process" method="post">
                 <p id="emailpara">Email</p>
-                <input type="email" class="input-type" id="email" placeholder="email" />
+                <input type="email" name="email" class="input-type" id="email" placeholder="email" />
                 <br />
                 <p id="pwpara">Password</p>
-                <input type="password" class="input-type" id="password" placeholder="password" />
+                <input type="password" name="password" class="input-type" id="password" placeholder="password" />
                 <br />
-                <input type="password" class="input-type" id="passwordCheck" placeholder="password confirm" />
+                <input type="password" name="password_check" class="input-type" id="passwordCheck" placeholder="password confirm" />
                 <p id="nicknamepara">Nickname</p>
-                <input class="input-type" id="nickname" placeholder="nickname" />
+                <input type="text" name="nickname" class="input-type" id="nickname" placeholder="nickname" />
                 <br />
                 <input type="checkbox" id="policyagree" /> <span id="policypara"> For me 정책에 동의합니다. </span><br>
                 <button type="submit" id="signupSubmitBtn" onClick=check_signup()>Sign up</button>
@@ -186,8 +168,7 @@ router.get('/signup', function (request, response) {
                 <p id="loginpara">Already have a account?<a href="login" id="link">　Log in</a></p>
             </form>
         </div>
-    </div>
-
+    </main>
 `;
     var html = template.HTML(title, head, body);
     response.send(html);
