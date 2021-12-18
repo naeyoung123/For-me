@@ -20,11 +20,12 @@ router.get('/', function (request, response) {
 
     <div style="background-color: rgb(248,238,254);">
          <center>
+            <br><br>
+            <a href="recommend">
+            <img src='images/main2.png'  width="600px" alt="메인2 사진">
+            </a>
             <br>
-            <h1 class="mt-5">나에게 딱! 맞는 용품은?</h1>
-            <button type="button" class="btn" style="background-color: rgb(145, 109, 145); color : white;">내 취향
-                알아보기</button>
-            <br>
+
         </center>
         <br><br>
     </div>

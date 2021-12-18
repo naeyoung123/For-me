@@ -8,15 +8,6 @@ router.get('/community/recommendation', function (request, response) {
         var title = '제품추천';
         var head = `
             <style>
-                @font-face {
-                    font-family: 'NanumSquareRound';
-                    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-                    font-weight: normal;
-                    font-style: normal;
-                }
-                *{
-                    font-family: 'NanumSquareRound';
-                }
                 .recommendation_main{
                     margin-top:200px;
                 }

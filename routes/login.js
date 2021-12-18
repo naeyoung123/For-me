@@ -5,18 +5,7 @@ var template = require('../lib/template.js');
 router.get('/login', function (request, response) {
     var title = '로그인';
     var head = `
-    <style>
-            @font-face {
-                font-family: 'NanumSquareRound';
-                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-                font-weight: normal;
-                font-style: normal;
-            }
-    
-            * {
-                font-family: 'NanumSquareRound';
-            }
-    
+    <style>    
             main>.container {
                 padding: 60px 15px 0;
             }
