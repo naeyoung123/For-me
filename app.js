@@ -34,6 +34,8 @@ const createReqRouter = require('./routes/community/create_req.js');
 const createReqProcessRouter = require('./routes/community/create_req_process.js');
 const requirementPageRouter = require('./routes/community/page_req.js');
 
+const searchRouter = require('./routes/search.js');
+
 const express = require('express');
 const app = express();
 
@@ -70,6 +72,8 @@ app.get('/community/requirement', requirementRouter);
 app.get('/community/requirement/create', createReqRouter);
 app.post('/community/requirement/create_process', createReqProcessRouter);
 app.get('/community/requirement/page/:pageId', requirementPageRouter);
+
+app.post('/search', searchRouter);
 
 
 // var server = http.createServer(function (request, response) {
