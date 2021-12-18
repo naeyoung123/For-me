@@ -7,15 +7,7 @@ router.get('/community/create_req', function (request, response) {
     var title = '건의글쓰기';
     var head = `
     <style>
-        @font-face {
-            font-family: 'NanumSquareRound';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        *{
-            font-family: 'NanumSquareRound';
-        }
+        
         .create_main{
             margin-top:200px;
         }

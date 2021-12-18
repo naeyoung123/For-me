@@ -10,15 +10,6 @@ router.get('/community/requirement/page/:pageId', function (request, response) {
         var title = '건의글보기';
         var head = `
             <style>
-                @font-face {
-                    font-family: 'NanumSquareRound';
-                    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-                    font-weight: normal;
-                    font-style: normal;
-                }
-                *{
-                    font-family: 'NanumSquareRound';
-                }
                 .requirement_page{
                     margin-top:200px;
                 }
