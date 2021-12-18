@@ -16,30 +16,19 @@ router.post('/search', function (request, response) {
             var title = '검색결과';
             var head = `
                 <style>
-                    @font-face {
-                        font-family: 'NanumSquareRound';
-                        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-                        font-weight: normal;
-                        font-style: normal;
-                    }
-                    *{
-                        font-family: 'NanumSquareRound';
-                    }
-                    .container{
-                        margin-top:200px;
-                    }
+                   
                 </style>
             `;
             var list_store = `
-                <th>제품</th>
-                <tr><td>'${post.search}'에 대한 검색 결과가 없습니다.</td></tr>
+                <th><h2>제품</h2></th>
+                <tr><td><h4>'${post.search}'에 대한 검색 결과가 없습니다.</h4></td></tr>
             `;
             var list_rec = '';
             var i = 0;
             if(res.length === 0){
                 list_rec += `
-                    <th>제품추천</th>
-                    <tr><td>'${post.search}'에 대한 검색 결과가 없습니다.</td></tr>
+                    <th><h2>제품추천</h2></th>
+                    <tr><td><h4>'${post.search}'에 대한 검색 결과가 없습니다.</h4></td></tr>
                 `;
             } else{
                 list_rec += `
@@ -66,17 +55,22 @@ router.post('/search', function (request, response) {
                 }
             }
             var body = `
-                <main class="flex-shrink-0">
-                    <div class="container">
+            <main class="flex-shrink-0">
+            <div class="container">
+                
+                <br><br>
+                    <center>
                         <table>
                             ${list_store}
                         </table>
-                        <br>
+                        <br><br>
                         <table>
                             ${list_rec}
                         </table>
-                    </div>
-                </main>
+                    </center>
+             
+            </div>
+            </main>
             `;
             var html = template.HTML(title, head, body);
             response.send(html);
