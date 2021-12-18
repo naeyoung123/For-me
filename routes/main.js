@@ -22,7 +22,7 @@ router.get('/', function (request, response) {
          <center>
             <br><br>
             <a href="recommend">
-            <img src='images/main2.png'  width="600px" alt="메인2 사진">
+            <img src='images/main2.png'  width="500px" alt="메인2 사진">
             </a>
             <br>
 
@@ -33,13 +33,13 @@ router.get('/', function (request, response) {
     <div class="container">
         <center>
             <div>
-            <div id="map" style="width:750px; height:350px;"></div>
+            <div id="map" style="width:750px; height:400px;"></div>
             <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=1c9766dae5fddfe9cdd8a20819475f20"></script>
             <script>
             var mapContainer = document.getElementById('map'), 
                     mapOption = {
                         center: new kakao.maps.LatLng(37.56682, 126.97865), 
-                        level: 4,
+                        level: 6,
                         mapTypeId : kakao.maps.MapTypeId.ROADMAP 
                     };
             var map = new kakao.maps.Map(mapContainer, mapOption); 
