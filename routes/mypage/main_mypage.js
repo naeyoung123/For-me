@@ -50,7 +50,7 @@ router.get('/mypage', function (request, response) {
                                 <td>${res2[i].title}</td>
                                 <td>${res2[i].writer}</td>
                                 <td>${res2[i].date}</td>
-                                <td><a href="/mypage/page_rec/page/${res2[i].id}">수정하기</a></td>
+                                <td><a href="/mypage/page_req/page/${res2[i].id}">수정하기</a></td>
                             </tr>
                     `;
                     i++;
@@ -60,7 +60,7 @@ router.get('/mypage', function (request, response) {
                     <div class="container">
                     <br>
                     <center>
-                            <img src="images/mypage.png" align="centerc" width="200px">
+                            <img src="images/mypage.png" align="center" width="200px">
                             <h1><b>${res0[0].nickname}의 MyPage</b></h1>
                             <h4>email : ${res0[0].email}</h4>
                             <h4>nickname : ${res0[0].nickname}</h4>
@@ -90,6 +90,7 @@ router.get('/mypage', function (request, response) {
                                 <td>Title.</td>
                                 <td>Writer</td>
                                 <td>Date</td>
+                                <td>Update</td>
                             </tr>
                                 ${list_req}
                             </table>
