@@ -4,23 +4,24 @@ var template = require('../../lib/template.js');
 const db = require('../../db.js');
 
 router.get('/mypage', function (request, response) {
-    db.query(`SELECT * FROM user WHERE email = ?`, ['donut@forme.com'], function(err0, res0){
-        db.query(`SELECT * FROM recommendation WHERE writer = ?`,['donut@forme.com'], function(err1, res1){
-            db.query(`SELECT * FROM requirement WHERE writer = ?`, ['donut@forme.com'], function(err2, res2){
+    db.query(`SELECT * FROM user WHERE email = ?`, ['naeyoung123@naver.com'], function(err0, res0){
+        db.query(`SELECT * FROM recommendation WHERE writer = ?`,['naeyoung123@naver.com'], function(err1, res1){
+            db.query(`SELECT * FROM requirement WHERE writer = ?`, ['naeyoung123@naver.com'], function(err2, res2){
                 var title = '마이페이지';
                 var head = `
                     <style>
-                        @font-face {
-                            font-family: 'NanumSquareRound';
-                            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-                            font-weight: normal;
-                            font-style: normal;
+                        table, td ,th {
+                            border : 1px solid black;
+                            border-collapse : collapse;
+                            padding : 15px;
                         }
-                        *{
-                            font-family: 'NanumSquareRound';
+                        a{
+                            text-decoration: none; 
+                            color : black;
                         }
-                        .recommendation_main{
-                            margin-top:200px;
+                        a:hover{
+                            text-decoration: none; 
+                            color : gray;
                         }
                     </style>
                 `;
@@ -32,10 +33,11 @@ router.get('/mypage', function (request, response) {
                             <tr>
                                 <td>${res1[i].id}</td>
                                 <td>
-                                    <a href="/mypage/page_rec/page/${res1[i].id}">${res1[i].title}</a>
+                                    ${res1[i].title}
                                 </td>
                                 <td>${res1[i].writer}</td>
                                 <td>${res1[i].date}</td>
+                                <td><a href="/mypage/page_rec/page/${res1[i].id}">수정하기</a></td>
                             </tr>
                     `;
                     i++;
@@ -45,33 +47,44 @@ router.get('/mypage', function (request, response) {
                     list_req += `
                             <tr>
                                 <td>${res2[i].id}</td>
-                                <td>
-                                    <a href="/mypage/page_req/page/${res2[i].id}">${res2[i].title}</a>
-                                </td>
+                                <td>${res2[i].title}</td>
                                 <td>${res2[i].writer}</td>
                                 <td>${res2[i].date}</td>
+                                <td><a href="/mypage/page_rec/page/${res2[i].id}">수정하기</a></td>
                             </tr>
                     `;
                     i++;
                 }
                 var body = `
                     <main class="flex-shrink-0">
-                        <div class="recommendation_main">
-                            <h3>${res0[0].nickname}의 Page</h3>
-                            <p>email : ${res0[0].email}</p>
-                            <p>nickname : ${res0[0].nickname}</p>
+                    <div class="container">
+                    <br>
+                    <center>
+                            <img src="images/mypage.png" align="centerc" width="200px">
+                            <h1><b>${res0[0].nickname}의 MyPage</b></h1>
+                            <h4>email : ${res0[0].email}</h4>
+                            <h4>nickname : ${res0[0].nickname}</h4>
+                        </div>
+                    </center>
+                    </div>
+
+                    <div class = "container">
+                        <div>
+                        <center>
                             <table>
-                            <th>recommendation</th>
+                            <th>제품추천</th>
                             <tr>
                                 <td>No.</td>
                                 <td>Title.</td>
                                 <td>Writer</td>
                                 <td>Date</td>
+                                <td>Update</td>
                             </tr>
                                 ${list_rec}
                             </table>
+                            <br><br>
                             <table>
-                            <th>requirement</th>
+                            <th>ForMe에게 바란다</th>
                             <tr>
                                 <td>No.</td>
                                 <td>Title.</td>
@@ -80,6 +93,9 @@ router.get('/mypage', function (request, response) {
                             </tr>
                                 ${list_req}
                             </table>
+                            <br><br>
+                        </div>
+                        </center>
                         </div>
                     </main>
                 `;

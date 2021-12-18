@@ -10,15 +10,6 @@ router.get('/signup', function (request, response) {
         main>.container {
             padding: 60px 15px 0;
         }
-        @font-face {
-            font-family: 'NanumSquareRound';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        * {
-            font-family: 'NanumSquareRound';
-        }
         body {
             text-align: center;
         }
@@ -151,6 +142,7 @@ router.get('/signup', function (request, response) {
             }
         </script>
         <div class="container">
+            <p id="signupLogo"><strong>Sign Up</strong></p>
             <form action="/signup_process" method="post">
                 <p id="emailpara">Email</p>
                 <input type="email" name="email" class="input-type" id="email" placeholder="email" />
