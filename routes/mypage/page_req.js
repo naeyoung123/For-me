@@ -31,7 +31,10 @@ router.get('/mypage/page_req/page/:pageId', function (request, response) {
                     <hr>
                     <p name="content">내용:${res[0].content}</p>
                     <a href="/mypage/update/page_req/${res[0].id}">수정</a>
-                    <a href="#">삭제</a>
+                    <form action="/mypage/delete_req_process" method="post">
+                        <input type="hidden" name="id" value=${res[0].id}/>
+                        <input type="submit" value="삭제">
+                    </form>
                 </div>
             </main>
         `;
