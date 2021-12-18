@@ -48,7 +48,7 @@ router.get('/mypage/page_rec/page/:pageId', function (request, response) {
                 <h6 class = "content2" name="content">  내용: ${res[0].content}</h6>
                 
                 <div style = "text-align:center; ">
-                    <div style = " margin-right:10px; display:inline-block;">
+                    <div style = "margin-right:10px; display:inline-block;">
                         <a href="/mypage/update/page_rec/${res[0].id}">
                             <input type="button" value="수정하기">
                         </a> 
