@@ -2,10 +2,20 @@ const http = require('http');
 const fs = require('fs');
 const url = require('url');
 const path = require('path');
-
+const db = require('./db.js');
 const mainRouter = require('./routes/main.js');
 const loginRouter = require('./routes/login.js');
 const signupRouter = require('./routes/signup.js');
+const signupProcessRouter = require('./routes/signup_process.js');
+
+const myPageRouter = require('./routes/mypage/main_mypage.js');
+const mypageRecPageRouter = require('./routes/mypage/page_rec.js');
+const mypageRecUpdateRouter = require('./routes/mypage/update_rec.js');
+const mypageRecUpdateProcessRouter = require('./routes/mypage/update_rec_process.js');
+const mypageReqPageRouter = require('./routes/mypage/page_req.js');
+const mypageReqUpdateRouter = require('./routes/mypage/update_req.js');
+const mypageReqUpdateProcessRouter = require('./routes/mypage/update_req_process.js');
+
 const cpadRouter = require('./routes/store/cpad.js');
 const cupRouter = require('./routes/store/cup.js');
 const padRouter = require('./routes/store/pad.js');
@@ -31,6 +41,16 @@ app.use(express.static('public'));
 app.use('/', mainRouter);
 app.get('/login', loginRouter);
 app.get('/signup', signupRouter);
+app.post('/signup_process', signupProcessRouter);
+
+app.get('/mypage', myPageRouter);
+app.get('/mypage/page_rec/page/:pageId', mypageRecPageRouter);
+app.get('/mypage/update/page_rec/:pageId', mypageRecUpdateRouter);
+app.post('/mypage/update_rec_process', mypageRecUpdateProcessRouter);
+app.get('/mypage/page_req/page/:pageId', mypageReqPageRouter);
+app.get('/mypage/update/page_req/:pageId', mypageReqUpdateRouter);
+app.post('/mypage/update_req_process', mypageReqUpdateProcessRouter);
+
 app.get('/store/cpad', cpadRouter);
 app.get('/store/cup', cupRouter);
 app.get('/store/pad', padRouter);
