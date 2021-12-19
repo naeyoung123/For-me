@@ -2,6 +2,7 @@ var express = require('express');
 const db = require('../../db.js');
 var router = express.Router();
 var template = require('../../lib/template.js');
+var author = require('../../lib/author.js');
 
 router.get('/prod_rec/qna', function (request, response) {
     var title = 'For me 나를 위해';
@@ -66,8 +67,8 @@ router.get('/prod_rec/qna', function (request, response) {
    
     </main>`;
 
-var html = template.HTML(title, head, body);
-response.send(html);
+  var html = template.HTML(title, head, body, author.statusUI(request, response));
+  response.send(html);
 });
 
 module.exports = router;

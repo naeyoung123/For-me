@@ -3,6 +3,7 @@ var router = express.Router();
 var template = require('../lib/template.js');
 const db = require('../db.js');
 var qs = require('querystring');
+var author = require('../lib/author.js');
 
 router.post('/search', function (request, response) {
     var _body = ``;
@@ -256,7 +257,7 @@ router.post('/search', function (request, response) {
                                 </div>
                             </main>
                             `;
-                            var html = template.HTML(title, head, body);
+                            var html = template.HTML(title, head, body, author.statusUI(request, response));
                             response.send(html);
                         })
                     })
