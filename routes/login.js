@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../lib/template.js');
+var author = require('../lib/author.js');
 
 router.get('/login', function (request, response) {
     var title = '로그인';
@@ -174,7 +175,7 @@ router.get('/login', function (request, response) {
                 </div>
             </div>
         </main>`;
-    var html = template.HTML(title, head, body);
+    var html = template.HTML(title, head, body, author.statusUI(request, response));
     response.send(html);
 });
 

@@ -2,6 +2,7 @@ var express = require('express');
 const db = require('../../db.js');
 var router = express.Router();
 var template = require('../../lib/template.js');
+var author = require('../../lib/author.js');
 
 router.get('/store/pad', function (request, response) {
     db.query(`SELECT * FROM pad`, function(err, res){
@@ -108,7 +109,7 @@ router.get('/store/pad', function (request, response) {
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     </main>
 `;
-    var html = template.HTML(title, head, body);
+    var html = template.HTML(title, head, body, author.statusUI(request, response));
     response.send(html);
     })
 });

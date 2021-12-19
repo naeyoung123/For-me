@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../lib/template.js');
+var author = require('../lib/author.js');
 
 router.get('/recommend', function (request, response) {
     var title = `월경 용품 추천`;
@@ -126,7 +127,7 @@ router.get('/recommend', function (request, response) {
     </div>
     </main>
 `;
-    var html = template.HTML(title, head, body);
+    var html = template.HTML(title, head, body, author.statusUI(request, response));
     response.send(html);
 });
 
