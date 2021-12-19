@@ -55,7 +55,7 @@ router.get('/store/cpad', function (request, response) {
             }
 
         </style>`;
-      
+    
             var list = ' ';
             for (var i = 0; i < res.length; i++) {
                 var company = res[i].company;
