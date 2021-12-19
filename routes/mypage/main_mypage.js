@@ -11,7 +11,7 @@ router.get('/mypage', function (request, response) {
                 var head = `
                     <style>
                         table, td ,th {
-                            border : 1px solid black;
+                            border : 2px solid gray;
                             border-collapse : collapse;
                             padding : 15px;
                         }
@@ -50,7 +50,7 @@ router.get('/mypage', function (request, response) {
                                 <td>${res2[i].title}</td>
                                 <td>${res2[i].writer}</td>
                                 <td>${res2[i].date}</td>
-                                <td><a href="/mypage/page_rec/page/${res2[i].id}">수정하기</a></td>
+                                <td><a href="/mypage/page_req/page/${res2[i].id}">수정하기</a></td>
                             </tr>
                     `;
                     i++;
@@ -60,7 +60,7 @@ router.get('/mypage', function (request, response) {
                     <div class="container">
                     <br>
                     <center>
-                            <img src="images/mypage.png" align="centerc" width="200px">
+                            <img src="images/mypage.png" align="center" width="200px">
                             <h1><b>${res0[0].nickname}의 MyPage</b></h1>
                             <h4>email : ${res0[0].email}</h4>
                             <h4>nickname : ${res0[0].nickname}</h4>
@@ -69,27 +69,29 @@ router.get('/mypage', function (request, response) {
                     </div>
 
                     <div class = "container">
-                        <div>
                         <center>
-                            <table>
-                            <th>제품추천</th>
-                            <tr>
-                                <td>No.</td>
-                                <td>Title.</td>
-                                <td>Writer</td>
-                                <td>Date</td>
-                                <td>Update</td>
+                            <table width = "80%">
+                            <tr style = "background-color : #EEEEEE;">
+                                <img src="images/mypage2.png" style = "float:left; margin-left : 10%;" width="300px">
+                               
+                                <td width = "10%"><b>No</b></td>
+                                <td width = "40%"><b>제목</b></td>
+                                <td width = "20%"><b>작성자</b></td>
+                                <td width = "20%"><b>작성일</b></td>
+                                <td width = "10%"><b>글수정</b></td>
+                              
                             </tr>
                                 ${list_rec}
                             </table>
                             <br><br>
-                            <table>
-                            <th>ForMe에게 바란다</th>
-                            <tr>
-                                <td>No.</td>
-                                <td>Title.</td>
-                                <td>Writer</td>
-                                <td>Date</td>
+                            <img src="images/mypage3.png" style = "float:left; margin-left : 10%;"  width="380px">
+                            <table width = "80%">
+                            <tr style = "background-color : #EEEEEE;">
+                                <td width = "10%"><b>No</b></td>
+                                <td width = "40%"><b>제목</b></td>
+                                <td width = "20%"><b>작성자</b></td>
+                                <td width = "20%"><b>작성일</b></td>
+                                <td width = "10%"><b>글수정</b></td>
                             </tr>
                                 ${list_req}
                             </table>

@@ -14,10 +14,10 @@ router.post('/community/recommendation/create_process', function (request, respo
         var title = post.title;
         var content = post.content;
         var date = new Date();
-        var writer = 'donut@forme.com';   //로그인한 사용자로 수정 필요!!!!
+        var writer = 'naeyoung123@naver.com';   //로그인한 사용자로 수정 필요!!!!
         db.query(`INSERT INTO recommendation (title, content, date, writer) VALUES(?, ?, ?, ?)`, [title, content, date, writer], function(err, res){
             if(err) throw err;
-            response.writeHead(302, {Location: `/community/recommend`});
+            response.writeHead(302, {Location: `/community/recommendation`});
             response.end();
         });
     });
