@@ -5,9 +5,9 @@ var template = require('../../lib/template.js');
 
 router.get('/store/cpad', function (request, response) {
     db.query(`SELECT * FROM cpad`, function(err, res){
-        var title = '면생리대';
+        var title = '면 월경대';
         var head = `
-            <style>
+        <style>
             .box{
                 float: left;
                 border: 1px solid black;
@@ -15,11 +15,11 @@ router.get('/store/cpad', function (request, response) {
                 margin: 2%;
                 text-align : center;
             }
-        
+
             .box:hover{
                 box-shadow: 5px 5px gray;
             }
-        
+
             #card .card-body {
                 position: absolute;
                 float: left;
@@ -31,35 +31,35 @@ router.get('/store/cpad', function (request, response) {
                 opacity: 0;
                 transition: all 0.6s ease-in-out;
                 z-index: 10;
-            }
-            
-            #card #li {
+              }
+
+              #card #li {
                 padding: 0;
                 overflow: hidden;
                 position: relative;
-            }
-            
-            #card #li:hover .card-body {
+              }
+
+              #card #li:hover .card-body {
                 opacity: 1;
                 transform: translateY(-210px);
-            }
-            
-            #card .card-body h5 {
+              }
+
+              #card .card-body h5 {
                 color: #ffffff;
                 text-align: left;
-            }
-            
+              }
+
             .content{
                 width: 100%; 
                 height: 850px;
             }
-        
-            </style>`;
-        
+
+        </style>`;
+      
             var list = ' ';
             for (var i = 0; i < res.length; i++) {
                 var company = res[i].company;
-                var product = res[i].brand + ' ' + res[i].product;
+                var product = res[i].product;
                 var address = res[i].address;
                 var image = res[i].image;
                 list += `
@@ -81,33 +81,33 @@ router.get('/store/cpad', function (request, response) {
         
                         
             var body = `
-            <main class="flex-shrink-0">
-                <div class="container">
-                    <div class="row">
-                        <center> 
-                            <img src='/images/cpad.png' alt="면생리대" width = "750px">
-                        </center>
+                <main class="flex-shrink-0">
+                    <div class="container">
+                        <div class="row">
+                            <center> 
+                                <img src='/images/cpad.png' alt="면 월경대" width = "750px">
+                            </center>
+                         </div>
+
+                        <div class="content">  
+                            ${list}
+                        </div>
+
+                        <div style= "text-align: center; display:inline-block;"> 
+                      <ul class="pagination ">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </div>
                     </div>
-                
-                    <div class="content">  
-                        ${list}
-                    </div>
-                    
-                    <div style= "text-align: center; display:inline-block;"> 
-                        <ul class="pagination ">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-            </main>
-        `;
+                </main>
+            `;
         var html = template.HTML(title, head, body);
         response.send(html);
     })
