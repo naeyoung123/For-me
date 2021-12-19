@@ -1,9 +1,11 @@
 var express = require('express');
+const db = require('../../db.js');
 var router = express.Router();
 var template = require('../../lib/template.js');
 
 router.get('/store/cup', function (request, response) {
-    var title = '월경컵';
+    db.query(`SELECT * FROM cup`, function(err, res){
+        var title = '월경컵';
     var head = `
     <style>
     .box{
@@ -72,61 +74,62 @@ router.get('/store/cup', function (request, response) {
         ['Lunette', 'Lunette 루넷컵 2사이즈 (해외구매) ', 'http://prod.danawa.com/info/?pcode=10166871&cate=17327493', 'http://img.danawa.com/prod_img/500000/871/166/img/10166871_1.jpg?shrink=330:330&_v=20211125145644'],
         ['Lunette', 'Lunette 루넷컵 1사이즈 (해외구매) ', 'http://prod.danawa.com/info/?pcode=10166751&cate=17327493', 'http://img.danawa.com/prod_img/500000/751/166/img/10166751_1.jpg?shrink=330:330&_v=20211125145644']
     ];
-
-    var list = ' ';
-    for (var i = 0; i < data.length; i++) {
-        var company = data[i][0];
-        var product = data[i][1];
-        var address = data[i][2];
-        var image = data[i][3];
-        list += `
-            <div class="box">
-                <div id="card">
-                    <a href = "${address}">
-                        <div id="li">
-                            <img src="${image}" style= "position:absoulte; width:100%; height:100%;">
-                            <div class="card-body">
-                                <h5 class="card-text">제조사명<br>: ${company}</h5><br>
-                                <h5 class="card-text">제품명<br>: ${product}</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            `;
-    }
-
-
-    var body = `
-    <main class="flex-shrink-0">
-        <div class="container">
-            <div class="row">
-                <center> 
-                    <img src='/images/cup.png' alt="월경컵" width = "750px">
-                </center>
-             </div>
         
-            <div class="content">  
-                ${list}
-            </div>
-            
-            <div style= "text-align: center; display:inline-block;"> 
-			    <ul class="pagination ">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </div>
-        </div>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    </main>
-`;
-    var html = template.HTML(title, head, body);
-    response.send(html);
+            var list = ' ';
+            for (var i = 0; i < res.length; i++) {
+                var company = res[i].company;
+                var product = res[i].brand + ' ' + res[i].product;
+                var address = res[i].address;
+                var image = res[i].image;
+                list += `
+                    <div class="box">
+                        <div id="card">
+                            <a href = "${address}">
+                                <div id="li">
+                                    <img src="${image}" style= "position:absoulte; width:100%; height:100%;">
+                                    <div class="card-body">
+                                        <h5 class="card-text">제조사명<br>: ${company}</h5><br>
+                                        <h5 class="card-text">제품명<br>: ${product}</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    `;
+            }
+        
+                        
+           var body = `
+              <main class="flex-shrink-0">
+                  <div class="container">
+                      <div class="row">
+                          <center> 
+                              <img src='/images/cup.png' alt="월경컵" width = "750px">
+                          </center>
+                       </div>
+
+                      <div class="content">  
+                          ${list}
+                      </div>
+
+                      <div style= "text-align: center; display:inline-block;"> 
+                    <ul class="pagination ">
+                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                              <li class="page-item"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+              <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+              </main>
+          `;
+          var html = template.HTML(title, head, body);
+          response.send(html);
+    })
 });
 
 module.exports = router;
