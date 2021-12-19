@@ -8,6 +8,7 @@ const cookie = require('cookie');
 const mainRouter = require('./routes/main.js');
 const loginRouter = require('./routes/login.js');
 const loginProcessRouter = require('./routes/login_process.js');
+const logoutProcessRouter = require('./routes/logout_process.js')
 const signupRouter = require('./routes/signup.js');
 const signupProcessRouter = require('./routes/signup_process.js');
 
@@ -59,6 +60,8 @@ app.get('/login', loginRouter);
 app.get('/signup', signupRouter);
 app.post('/signup_process', signupProcessRouter);
 app.post('/login_process',loginProcessRouter);
+app.get('/logout_process', logoutProcessRouter);
+
 
 app.get('/mypage', myPageRouter);
 app.get('/mypage/page_rec/page/:pageId', mypageRecPageRouter);

@@ -4,6 +4,7 @@ var template = require('../lib/template.js');
 
 router.get('/login', function (request, response) {
     var title = '로그인';
+    var authStatusUI = `<a class="nav-link" href="/login">로그인</a>`;
     var head = `
     <style>    
             main>.container {
@@ -175,7 +176,7 @@ router.get('/login', function (request, response) {
                 </div>
             </div>
         </main>`;
-    var html = template.HTML(title, head, body);
+    var html = template.HTML(title, head, body,authStatusUI);
     response.send(html);
 });
 
