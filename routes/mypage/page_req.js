@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../../lib/template.js');
+var author = require('../../lib/author.js');
 const db = require('../../db.js');
 var path = require('path');
 
@@ -63,7 +64,7 @@ router.get('/mypage/page_req/page/:pageId', function (request, response) {
                     </div>
             </main>
         `;
-        var html = template.HTML(title, head, body);
+        var html = template.HTML(title, head, body, author.statusUI(request, response));
         response.send(html);
     });
 });

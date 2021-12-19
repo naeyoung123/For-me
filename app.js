@@ -3,8 +3,12 @@ const fs = require('fs');
 const url = require('url');
 const path = require('path');
 const db = require('./db.js');
+const session = require('express-session');
+
 const mainRouter = require('./routes/main.js');
 const loginRouter = require('./routes/login.js');
+const loginProcessRouter = require('./routes/login_process.js');
+const logoutProcessRouter = require('./routes/logout_process.js');
 const signupRouter = require('./routes/signup.js');
 const signupProcessRouter = require('./routes/signup_process.js');
 
@@ -43,7 +47,19 @@ app.use(express.static('public'));
 
 
 app.use('/', mainRouter);
+app.use(express.static('public'));
+app.use(session({
+  key:'my key',
+  secret: 'secret',
+  resave: false,
+  saveUninitialize: true,
+  cookie:{
+    maxAge: 60 * 60 * 24 * 1
+  }
+}));
 app.get('/login', loginRouter);
+app.post('/login_process',loginProcessRouter);
+app.get('/logout_process',logoutProcessRouter);
 app.get('/signup', signupRouter);
 app.post('/signup_process', signupProcessRouter);
 
