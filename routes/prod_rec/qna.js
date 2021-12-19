@@ -25,6 +25,11 @@ router.get('/prod_rec/qna', function (request, response) {
       border-radius: 20px;
       background-color: purple;
   }
+
+  #result{
+    display: none;
+  }
+
     </style>
     `;
     var body = `
@@ -53,10 +58,17 @@ router.get('/prod_rec/qna', function (request, response) {
                 </div>
             </section>
             <section id="result">
-              <h1>나에게 딱맞는 월경용품 찾기</h1>
-              <div class="col-lg-6 col-md-8 col-sm-10 col-12 mx-auto">
-                <img src=" " alt="mainImage" class="img-fluid">
+              <h1>나에게 딱맞는 월경용품 찾기 결과는? </h1>
+              <div class="resultname">
+              
               </div>
+              <div id="resultImg" class="col-lg-6 col-md-8 col-sm-10 col-mx-auto">
+              
+              </div>
+              <div class="resultDesc">
+              
+              </div>
+              <button type="button">공유하기</button>
             </section>
             <script src="./question.js" charset="utf-8"></script>
             <script src="./start.js" charset="utf-8"></script>
