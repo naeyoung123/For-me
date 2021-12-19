@@ -8,9 +8,23 @@ router.get('/community/recommendation', function (request, response) {
         var title = '제품추천';
         var head = `
             <style>
-                .recommendation_main{
-                    margin-top:200px;
-                }
+            table, td ,th {
+                border : 2px solid gray;
+                border-collapse : collapse;
+                padding : 15px;
+            }
+            a{
+                text-decoration: none; 
+                color : black;
+            }
+            a:hover{
+                text-decoration: none; 
+                color : gray;
+            }
+            #content-btn{
+                background-color : #EEEEEE;
+                border : 1px solid #C2C2C2;
+            }
             </style>
         `;
         var list = '';
@@ -29,20 +43,30 @@ router.get('/community/recommendation', function (request, response) {
             i++;
         }
         var body = `
-            <main class="flex-shrink-0">
-                <div class="recommendation_main">
-                    <a href="/community/recommendation/create">글쓰기</a>
-                    <table>
-                    <tr>
-                        <td>No.</td>
-                        <td>Title.</td>
-                        <td>Writer</td>
-                        <td>Date</td>
+        <main class="flex-shrink-0">
+            <div class="container">
+            <br>
+                <center>
+                    <img src="/images/recommendation.png" align="center" width="400px">
+            <br><br><br>
+                <center>
+                    <table width = "80%">
+                    <tr style = "background-color : #EEEEEE;">
+                        <td width = "10%"><b>No</b></td>
+                        <td width = "45%"><b>제목</b>.</td>
+                        <td width = "25%"><b>작성자</b></td>
+                        <td width = "20%"><b>작성일</b></td>
+                      
                     </tr>
                         ${list}
                     </table>
-                </div>
-            </main>
+                    <br>
+                    <a href="/community/recommendation/create">
+                        <button id = "content-btn" type="button" class="btn">글쓰기</button>
+                    </a>
+                </center>
+            </div>
+        </main>
         `;
         var html = template.HTML(title, head, body);
         response.send(html);
