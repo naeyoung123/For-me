@@ -19,6 +19,11 @@ router.post('/search', function (request, response) {
                             var title = '검색결과';
                             var head = `
                                 <style>
+                                    table, td ,th {
+                                        border : 2px solid gray;
+                                        border-collapse : collapse;
+                                        padding : 15px;
+                                    }
                                     .box{
                                         float: left;
                                         border: 1px solid black;
@@ -26,7 +31,14 @@ router.post('/search', function (request, response) {
                                         margin: 2%;
                                         text-align : center;
                                     }
-                        
+                                    a{
+                                        text-decoration: none; 
+                                        color : black;
+                                    }
+                                    a:hover{
+                                        text-decoration: none; 
+                                        color : gray;
+                                    }
                                     .box:hover{
                                         box-shadow: 5px 5px gray;
                                     }
@@ -61,15 +73,17 @@ router.post('/search', function (request, response) {
                                     }
                         
                                     .content{
-                                        width: 100%;
+                                        width : 100%; 
+                                        height : 850px;
                                     }
-                        
                                 </style>
                             `;
                             var list_pad = '';
                             if(pad.length === 0){
                                 list_pad += `
+                                <br>
                                     <tr><td><h4>'${post.search}'에 대한 검색 결과가 없습니다.</h4></td></tr>
+                                <br>
                                 `;
                             } else{
                                 for(i = 0; i < pad.length; i++) {
@@ -93,12 +107,14 @@ router.post('/search', function (request, response) {
                             var list_cpad = '';
                             if(cpad.length === 0){
                                 list_cpad += `
+                                <br>
                                     <tr><td><h4>'${post.search}'에 대한 검색 결과가 없습니다.</h4></td></tr>
+                                <br>
                                 `;
                             } else{
                                 for(i = 0; i < cpad.length; i++) {
                                     list_cpad += `
-                                        <div class="box">
+                                        <div class="box" >
                                             <div id="card">
                                                 <a href = "${cpad[i].address}">
                                                     <div id="li">
@@ -111,13 +127,17 @@ router.post('/search', function (request, response) {
                                                 </a>
                                             </div>
                                         </div>
+                                        <br>
                                     `;
                                 }
                             }
+                            
                             var list_cup = '';
                             if(cup.length === 0){
                                 list_cup += `
+                                <br>
                                     <tr><td><h4>'${post.search}'에 대한 검색 결과가 없습니다.</h4></td></tr>
+                                <br>
                                 `;
                             } else{
                                 for(i = 0; i < cup.length; i++) {
@@ -135,18 +155,22 @@ router.post('/search', function (request, response) {
                                                 </a>
                                             </div>
                                         </div>
+                                        <br>
                                     `;
                                 }
                             }
+
                             var list_tampon = '';
                             if(tampon.length === 0){
                                 list_tampon += `
+                                <br>
                                     <tr><td><h4>'${post.search}'에 대한 검색 결과가 없습니다.</h4></td></tr>
+                                <br>
                                 `;
                             } else{
                                 for(i = 0; i < tampon.length; i++) {
                                     list_tampon += `
-                                        <div class="box">
+                                        <div class="box" >
                                             <div id="card">
                                                 <a href = "${tampon[i].address}">
                                                     <div id="li">
@@ -159,24 +183,25 @@ router.post('/search', function (request, response) {
                                                 </a>
                                             </div>
                                         </div>
+                                    <br>
                                     `;
                                 }
                             }
                             var list_rec = '';
                             if(rec.length === 0){
                                 list_rec += `
-                                    <th><h2>제품추천</h2></th>
+                                    <th><h3>제품추천</h3></th>
                                     <tr><td><h4>'${post.search}'에 대한 검색 결과가 없습니다.</h4></td></tr>
                                 `;
                             } else{
                                 list_rec += `
-                                    <th>제품추천</th>
-                                    <tr>
-                                        <td>No.</td>
-                                        <td>Title.</td>
-                                        <td>Writer</td>
-                                        <td>Date</td>
-                                    </tr>
+                                <tr style = "background-color : #EEEEEE;">
+                                    <td width = "10%"><b>No</b></td>
+                                    <td width = "45%"><b>제목</b>.</td>
+                                    <td width = "25%"><b>작성자</b></td>
+                                    <td width = "20%"><b>작성일</b></td>
+                                </tr>
+                                
                                 `;
                                 for(i = 0; i < rec.length; i++) {
                                     list_rec += `
@@ -193,40 +218,42 @@ router.post('/search', function (request, response) {
                             }
                             var body = `
                             <main class="flex-shrink-0">
-                            <div class="container">
-                                
+                                <div class="container">
                                 <br><br>
-                                    <center>
+                                    <div class="content">
+                                            <h3><b>일회용 월경대</b></h3>
+                                            ${list_pad}
+                                    </div>
+                                    
+                                    <br><hr><br>
+                                    <div class="content">
+                                            <h3><b>면 월경대</b></h3>
+                                            ${list_cpad}
+                                    </div>
+                                    <br><hr><br>
+                                    <div class="content">
+                                            <h3><b>월경컵</b></h3>
+                                            ${list_cup}
+                                    </div>
+                                    <br><hr><br>
+                                    <div class="content" >
+                                            <h3><b>탐폰</b></h3>
+                                            ${list_tampon}
+                                    </div>
+                                   
+                                    <br><hr><br>
                                     <div class="content">
                                         <div>
-                                            <h2>일회용 월경대</h2>
-                                            ${list_pad}
-                                        </div>
-                                        <br><br>
-                                        <div class="content">
-                                            <h2>면 월경대</h2>
-                                            ${list_cpad}
-                                        </div>
-                                        <br><br>
-                                        <div class="content">
-                                            <h2>월경컵</h2>
-                                            ${list_cup}
-                                        </div>
-                                        <br><br>
-                                        <div class="content">
-                                            <h2>탐폰</h2>
-                                            ${list_tampon}
-                                        </div>
-                                        <br><br>
-                                        <div class="content">
-                                            <table>
+                                            <center>
+                                            <br>
+                                            <img src="images/mypage2.png" style = "float:left; margin-left : 2%;"  width="380px">
+                                            <table width = "95%">
                                                 ${list_rec}
                                             </table>
+                                            </center>
                                         </div>
-                                        </div>
-                                    </center>
-                            
-                            </div>
+                                    </div>
+                                </div>
                             </main>
                             `;
                             var html = template.HTML(title, head, body);
