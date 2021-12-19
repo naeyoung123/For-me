@@ -6,23 +6,49 @@ var path = require('path');
 
 router.get('/community/requirement/page/:pageId', function (request, response) {
     var pageId = path.parse(request.params.pageId).base;
-    db.query(`SELECT * FROM requirement WHERE id=?`, [pageId], function(err, res){
+    db.query(`SELECT * FROM requirement WHERE id=?`, [pageId], function (err, res) {
         var title = '건의글보기';
         var head = `
-            <style>
-                .requirement_page{
-                    margin-top:200px;
-                }
-            </style>
+        <style>
+        body {
+            text-align: center;
+            background-color : #EEEEEE;
+        }
+        .formbox {
+            display : inline-block;
+            background-color: white;
+            width: 800px; height : 500px;
+            text-align: left;
+            border: 1px solid black;
+            margin-top: 100px auto;
+            border-radius: 30px;
+            padding-bottom: 30px;
+        }
+   
+        .input {
+            width: 100%;
+            border: none;
+            resize: none;
+            
+          }
+        .content2{
+            width: 100%;
+            height: 70%;
+        }
+        </style>
         `;
         var body = `
-            <main class="flex-shrink-0">
-                <div class="requirement_page">
-                    <p name="title">제목:${res[0].title}</p>
+        <main class="flex-shrink-0">
+            <div class="container">
+                <br><br>
+                <div class = "formbox">
+                    <br>
+                    <h5 name="title"><center><b>${res[0].title}</b></center></h5>
                     <hr>
-                    <p name="content">내용:${res[0].content}</p>
+                    <h5 class = "content2" name="content">${res[0].content}</h5>
                 </div>
-            </main>
+            </div>
+        </main>
         `;
         var html = template.HTML(title, head, body);
         response.send(html);

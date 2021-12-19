@@ -9,19 +9,47 @@ router.get('/community/recommendation/page/:pageId', function (request, response
     db.query(`SELECT * FROM recommendation WHERE id=?`, [pageId], function(err, res){
         var title = '추천글보기';
         var head = `
-                .recommendation_page{
-                    margin-top:200px;
-                }
-            </style>
+        <style>
+            body {
+                text-align: center;
+                background-color : #EEEEEE;
+            }
+            .formbox {
+                display : inline-block;
+                background-color: white;
+                width: 800px; height : 500px;
+                text-align: left;
+                border: 1px solid black;
+                margin-top: 100px auto;
+                border-radius: 30px;
+                padding-bottom: 30px;
+            }
+       
+            .input {
+                width: 100%;
+                border: none;
+                resize: none;
+                
+              }
+            .content2{
+                width: 100%;
+                height: 70%;
+            }
+        </style>
         `;
         var body = `
-            <main class="flex-shrink-0">
-                <div class="recommendation_page">
-                    <p name="title">제목:${res[0].title}</p>
-                    <hr>
-                    <p name="content">내용:${res[0].content}</p>
+        <main class="flex-shrink-0">
+            <div class="container">
+                <br><br>
+                <div class = "formbox">
+                <br>
+                <h5 name="title"><center><b>${res[0].title}</b></center></h5>
+                <hr>
+                <h5 class = "content2" name="content">${res[0].content}</h5>
                 </div>
-            </main>
+            </div>
+        </main>
+       
         `;
         var html = template.HTML(title, head, body);
         response.send(html);
