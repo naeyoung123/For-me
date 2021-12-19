@@ -77,7 +77,7 @@ router.get('/store/pad', function (request, response) {
                         </div>
                     </div>
                 `;
-    }
+            }
 
 
     var body = `

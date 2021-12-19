@@ -49,7 +49,6 @@ router.get('/community/recommendation/page/:pageId', function (request, response
                 </div>
             </div>
         </main>
-       
         `;
         var html = template.HTML(title, head, body);
         response.send(html);
