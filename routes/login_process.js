@@ -4,6 +4,7 @@ var template = require('../lib/template.js');
 const db = require('../db.js');
 var qs = require('querystring');
 
+
 router.post('/login_process', function (request, response) {
     var body = ``;
     request.on('data', function(data){
@@ -14,15 +15,27 @@ router.post('/login_process', function (request, response) {
         var email = post.email;
         var password = post.password;
         
-        var col = ['email', 'nickname'];
+        var col = 'email';
         var tablename = 'user';
+        var isOwner = false;
+        var authStatusUI = '<a class="nav-link" href="/login">로그인</a>';
+        
             db.query('SELECT ?? FROM ?? WHERE email = ? and password = ?', [col, tablename, email, password], function(err, data){
                 if(err) throw err;
-            
+                if(!data[0])
+                    return response.redirect('/login');
+
                 var user = data[0];
+                
+                if(err) throw err;
                 if(email == data[0].email || password == data[0].password){
                     request.session.email = user.email;
                     request.session.save(function(){
+                        isOwner = true;
+                        if(isOwner){
+                            authStatusUI = '<a class="nav-link" href="/logout_process">로그아웃</a>';
+                        }
+                        console.log(isOwner);
                         return response.redirect('/');
                     });
                 }
@@ -30,14 +43,30 @@ router.post('/login_process', function (request, response) {
                     return response.redirect('/login')
                 }
                 
-                if(err) {
-                    response.writeHead(200, {Location: `/login`});
-                    response.end();
-                }
             
             });
 
     });
 });
+
+
+router.get('/logout_process', function(request,response){
+    console.log('logout_process 호출됨');
+
+    if(request.session.user){
+        console.log('logout');
+
+        req.session.destroy(function(err){
+            if(err) throw err;
+            console.log("세션 삭제 후 로그아웃");
+            res.redirect('/');
+        });
+    }
+    else{
+        console.log('로그인 상태 아님');
+        res.redirect('/');
+    }
+})
+
 
 module.exports = router;

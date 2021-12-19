@@ -13,15 +13,18 @@ router.post('/signup_process', function (request, response) {
         var post = qs.parse(body);
         var email = post.email;
         var password = post.password;
+        var password_check = post.password_check;
         var nickname = post.nickname;
-        db.query(`INSERT INTO user (email, password, nickname) VALUES(?, ?, ?)`, [email, password, nickname], function(err, res){
-            if(err) {
-                response.writeHead(302, {Location: `/signup`});
+        if(password == password_check){
+            db.query(`INSERT INTO user (email, password, nickname) VALUES(?, ?, ?)`, [email, password, nickname], function(err, res){
+                if(err) {
+                    response.writeHead(200, {Location: `/signup`});
+                    response.end();
+                }
+                response.writeHead(302, {Location: `/`});
                 response.end();
-            }
-            response.writeHead(302, {Location: `/`});
-            response.end();
-        });
+            });
+    }
     });
 });
 

@@ -5,6 +5,7 @@ var template = require('../lib/template.js');
 router.get('/', function (request, response) {
     var title = 'For me 나를 위해';
     var head = ``;
+    var authStatusUI = '<a href="/login">로그인</a>'
     var body = `
     <main class="flex-shrink-0">
     <div class="container">
@@ -318,7 +319,7 @@ router.get('/', function (request, response) {
     </div>
     </main>`;
 
-    var html = template.HTML(title, head, body);
+    var html = template.HTML(title, head, body,authStatusUI);
     response.send(html);
 });
 

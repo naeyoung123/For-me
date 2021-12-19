@@ -158,13 +158,13 @@ router.get('/login', function (request, response) {
             <div class="container">
                 <div className="signupBox">
                     <p id="signupLogo"><strong>Log In</strong></p>
-                    <form className="inputField">
+                    <form className="inputField" method="post" action="/login_process">
                         <p id="emailpara">Email</p>
-                        <input type="email" class="input-type" placeholder="email" />
+                        <input type="email" class="input-type" name="email" placeholder="email" />
                         <br>
     
                         <p id="pwpara">Password</p>
-                        <input type="password" class="input-type" placeholder="password" />
+                        <input type="password" class="input-type" name="password" placeholder="password" />
                         <br />
                         <button type="submit" id="signupSubmitBtn" onClick=login()>Log In</button>
     

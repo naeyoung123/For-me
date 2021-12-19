@@ -3,10 +3,14 @@ const fs = require('fs');
 const url = require('url');
 const path = require('path');
 const db = require('./db.js');
+const session = require('express-session');
+const cookie = require('cookie');
 const mainRouter = require('./routes/main.js');
 const loginRouter = require('./routes/login.js');
+const loginProcessRouter = require('./routes/login_process.js');
 const signupRouter = require('./routes/signup.js');
 const signupProcessRouter = require('./routes/signup_process.js');
+
 
 const myPageRouter = require('./routes/mypage/main_mypage.js');
 const mypageRecPageRouter = require('./routes/mypage/page_rec.js');
@@ -40,12 +44,21 @@ const express = require('express');
 const app = express();
 
 app.use(express.static('public'));
-
+app.use(session({
+  key:'my key',
+  secret: 'secret',
+  resave: false,
+  saveUninitialize: true,
+  cookie:{
+    maxAge: 60 * 60 * 24 * 1
+  }
+}));
 
 app.use('/', mainRouter);
 app.get('/login', loginRouter);
 app.get('/signup', signupRouter);
 app.post('/signup_process', signupProcessRouter);
+app.post('/login_process',loginProcessRouter);
 
 app.get('/mypage', myPageRouter);
 app.get('/mypage/page_rec/page/:pageId', mypageRecPageRouter);
