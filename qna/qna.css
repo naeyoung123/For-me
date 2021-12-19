@@ -1,0 +1,12 @@
+.status{
+    height: 20px;
+    width: 80%;
+    background-color: ivory;
+    border-radius: 20px;
+}
+
+.statusBar{
+    height: 100%;
+    border-radius: 20px;
+    background-color: purple;
+}
