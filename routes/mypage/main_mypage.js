@@ -5,6 +5,10 @@ var author = require('../../lib/author.js');
 const db = require('../../db.js');
 
 router.get('/mypage', function (request, response) {
+    if(author.isOwner(request, response) === false){
+        response.redirect('/');
+        return false;
+    }
     db.query(`SELECT * FROM user WHERE email = ?`, [request.session.email], function(err0, res0){
         db.query(`SELECT * FROM recommendation WHERE writer = ?`,[request.session.email], function(err1, res1){
             db.query(`SELECT * FROM requirement WHERE writer = ?`, [request.session.email], function(err2, res2){
