@@ -12,10 +12,11 @@ router.get('/mypage', function (request, response) {
     db.query(`SELECT * FROM user WHERE email = ?`, [request.session.email], function(err0, res0){
         db.query(`SELECT * FROM recommendation WHERE writer = ?`,[request.session.email], function(err1, res1){
             db.query(`SELECT * FROM requirement WHERE writer = ?`, [request.session.email], function(err2, res2){
-                db.query(`SELECT * FROM pad LEFT JOIN liked ON pad.id=liked.store_id WHERE user_id=? and type=?`, [request.session.email, 0], function(err3, pad){
-                db.query(`SELECT * FROM cpad LEFT JOIN liked ON cpad.id=liked.store_id WHERE user_id=? and type=?`, [request.session.email, 1], function(err3, cpad){
-                db.query(`SELECT * FROM cup LEFT JOIN liked ON cup.id=liked.store_id WHERE user_id=? and type=?`, [request.session.email, 2], function(err3, cup){
-                db.query(`SELECT * FROM tampon LEFT JOIN liked ON tampon.id=liked.store_id WHERE user_id=? and type=?`, [request.session.email, 3], function(err3, tampon){
+                db.query(`SELECT * FROM comment_rec WHERE writer = ?`, [request.session.email], function(err3, com){
+                db.query(`SELECT * FROM pad LEFT JOIN liked ON pad.id=liked.store_id WHERE user_id=? and type=?`, [request.session.email, 0], function(err4, pad){
+                db.query(`SELECT * FROM cpad LEFT JOIN liked ON cpad.id=liked.store_id WHERE user_id=? and type=?`, [request.session.email, 1], function(err5, cpad){
+                db.query(`SELECT * FROM cup LEFT JOIN liked ON cup.id=liked.store_id WHERE user_id=? and type=?`, [request.session.email, 2], function(err6, cup){
+                db.query(`SELECT * FROM tampon LEFT JOIN liked ON tampon.id=liked.store_id WHERE user_id=? and type=?`, [request.session.email, 3], function(err7, tampon){
                     var title = '마이페이지';
                     var head = `
                         <style>
@@ -83,6 +84,7 @@ router.get('/mypage', function (request, response) {
                         </style>
                     `;
                     var list_rec = '';
+                    var list_com = '';
                     var list_req = '';
                     var list_store = '';
                     for(i=0; i < res1.length; i++) {
@@ -95,6 +97,24 @@ router.get('/mypage', function (request, response) {
                                     <td>${res1[i].writer}</td>
                                     <td>${res1[i].date}</td>
                                     <td><a href="/mypage/page_rec/page/${res1[i].id}">수정하기</a></td>
+                                </tr>
+                        `;
+                    }
+                    for(i=0; i < com.length; i++) {
+                        list_com += `
+                                <tr>
+                                    <td>${com[i].id}</td>
+                                    <td>
+                                        ${com[i].content}
+                                    </td>
+                                    <td>${com[i].writer}</td>
+                                    <td>${com[i].date}</td>
+                                    <td>
+                                        <form action="/mypage/delete_com_process" method="post">
+                                            <input type="hidden" name="id" value="${com[i].id}"/>
+                                            <button type="submit">삭제</button>
+                                        </form>
+                                    </td>
                                 </tr>
                         `;
                     }
@@ -226,6 +246,20 @@ router.get('/mypage', function (request, response) {
                                     ${list_rec}
                                 </table>
                                 <br><br>
+                                <table width = "80%">
+                                <tr style = "background-color : #EEEEEE;">
+                                    <img src="images/mypage2.png" style = "float:left; margin-left : 10%;" width="300px">
+
+                                    <td width = "10%"><b>No</b></td>
+                                    <td width = "40%"><b>댓글</b></td>
+                                    <td width = "20%"><b>작성자</b></td>
+                                    <td width = "20%"><b>작성일</b></td>
+                                    <td width = "10%"><b>댓글삭제</b></td>
+                                  
+                                </tr>
+                                    ${list_com}
+                                </table>
+                                <br><br>
                                 <img src="images/mypage3.png" style = "float:left; margin-left : 10%;"  width="380px">
                                 <table width = "80%">
                                 <tr style = "background-color : #EEEEEE;">
@@ -253,7 +287,7 @@ router.get('/mypage', function (request, response) {
                 })
                 })
                 })
-            })
+            })})
         })
     })
 });
