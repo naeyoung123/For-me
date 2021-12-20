@@ -23,7 +23,7 @@ router.get('/', function (request, response) {
     <div style="background-color: rgb(248,238,254);">
          <center>
             <br><br>
-            <a href="recommend">
+            <a href="/prod_rec/qna">
             <img src='images/main2.png'  width="500px" alt="메인2 사진">
             </a>
             <br>

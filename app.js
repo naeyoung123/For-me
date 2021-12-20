@@ -15,6 +15,8 @@ const findPwRouter = require('./routes/accounts/find_password.js');
 const findPwProcessRouter = require('./routes/accounts/find_password_process.js');
 const findPwSuccessRouter = require('./routes/accounts/find_password_success.js');
 
+const prodRecQnaRouter = require('./routes/prod_rec/qna.js');
+
 const myPageRouter = require('./routes/mypage/main_mypage.js');
 const mypageRecPageRouter = require('./routes/mypage/page_rec.js');
 const mypageRecUpdateRouter = require('./routes/mypage/update_rec.js');
@@ -75,6 +77,8 @@ app.get('/logout_process', logoutProcessRouter);
 app.get('/find_password', findPwRouter);
 app.post('/find_password_process', findPwProcessRouter);
 app.get('/find_password/success/:email', findPwSuccessRouter);
+
+app.get('/prod_rec/qna', prodRecQnaRouter);
 
 app.get('/mypage', myPageRouter);
 app.get('/mypage/page_rec/page/:pageId', mypageRecPageRouter);
