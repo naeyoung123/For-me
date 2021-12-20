@@ -15,7 +15,7 @@ router.post('/find_password_process', function (request, response) {
         var nickname = post.nickname;
         db.query(`SELECT password FROM user WHERE email=? and nickname=?`, [email, nickname], function(err, res){
             if (res[0] == undefined) {
-                response.end(`/not our user`);
+                response.redirect(`/find_password`);
             } else{
                 response.redirect(`/find_password/success/${email}`);
             }
