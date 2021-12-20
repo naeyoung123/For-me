@@ -115,7 +115,7 @@ router.get('/mypage', function (request, response) {
                                             <div class="card-body">
                                                 <h5 class="card-text">제조사명<br>: ${pad[i].company}</h5><br>
                                                 <h5 class="card-text">제품명<br>: ${pad[i].product}</h5>
-                                                <form action="/store/like_process/tampon" method="post">
+                                                <form action="/mypage/like_process/pad" method="post">
                                                     <input type="hidden" name=id value='${pad[i].id}'/>
                                                     <button type="submit"><img src="images/heart.png"  width="20px" height="20px" alt="좋아요" ></button>
                                                 </form>
@@ -137,7 +137,7 @@ router.get('/mypage', function (request, response) {
                                             <div class="card-body">
                                                 <h5 class="card-text">제조사명<br>: ${cpad[i].company}</h5><br>
                                                 <h5 class="card-text">제품명<br>: ${cpad[i].product}</h5>
-                                                <form action="/store/like_process/tampon" method="post">
+                                                <form action="/mypage/like_process/cpad" method="post">
                                                     <input type="hidden" name=id value='${cpad[i].id}'/>
                                                     <button type="submit"><img src="images/heart.png"  width="20px" height="20px" alt="좋아요" ></button>
                                                 </form>
@@ -159,7 +159,7 @@ router.get('/mypage', function (request, response) {
                                             <div class="card-body">
                                                 <h5 class="card-text">제조사명<br>: ${cup[i].company}</h5><br>
                                                 <h5 class="card-text">제품명<br>: ${cup[i].product}</h5>
-                                                <form action="/store/like_process/tampon" method="post">
+                                                <form action="/mypage/like_process/cup" method="post">
                                                     <input type="hidden" name=id value='${cup[i].id}'/>
                                                     <button type="submit"><img src="images/heart.png"  width="20px" height="20px" alt="좋아요" ></button>
                                                 </form>
@@ -181,7 +181,7 @@ router.get('/mypage', function (request, response) {
                                             <div class="card-body">
                                                 <h5 class="card-text">제조사명<br>: ${tampon[i].company}</h5><br>
                                                 <h5 class="card-text">제품명<br>: ${tampon[i].product}</h5>
-                                                <form action="/store/like_process/tampon" method="post">
+                                                <form action="/mypage/like_process/tampon" method="post">
                                                     <input type="hidden" name=id value='${tampon[i].id}'/>
                                                     <button type="submit"><img src="images/heart.png"  width="20px" height="20px" alt="좋아요" ></button>
                                                 </form>
