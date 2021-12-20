@@ -5,9 +5,9 @@ var author = require('../../lib/author.js');
 const db = require('../../db.js');
 
 router.get('/mypage', function (request, response) {
-    db.query(`SELECT * FROM user WHERE email = ?`, ['naeyoung123@naver.com'], function(err0, res0){
-        db.query(`SELECT * FROM recommendation WHERE writer = ?`,['naeyoung123@naver.com'], function(err1, res1){
-            db.query(`SELECT * FROM requirement WHERE writer = ?`, ['naeyoung123@naver.com'], function(err2, res2){
+    db.query(`SELECT * FROM user WHERE email = ?`, [request.session.email], function(err0, res0){
+        db.query(`SELECT * FROM recommendation WHERE writer = ?`,[request.session.email], function(err1, res1){
+            db.query(`SELECT * FROM requirement WHERE writer = ?`, [request.session.email], function(err2, res2){
                 var title = '마이페이지';
                 var head = `
                     <style>
