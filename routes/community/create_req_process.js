@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var template = require('../../lib/template.js');
+var author = require('../../lib/author.js');
 const db = require('../../db.js');
 var qs = require('querystring');
 var moment= require('moment');
