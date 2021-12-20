@@ -1,20 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../lib/template.js');
-const db = require('../db.js');
-var qs = require('querystring');
 
 router.get('/logout_process', function(req,res){
-    if(req.session.user){
-        console.log('logout');
-
+    if( req.session.is_logined){
         req.session.destroy(function(err){
             if(err) throw err;
-            res.redirect('/store/pad');
+            res.redirect('/');
         });
     }
     else{
-        res.redirect('/store/pad');
+        res.redirect('/');
     }
 });
 
