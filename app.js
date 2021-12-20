@@ -21,6 +21,10 @@ const mypageReqPageRouter = require('./routes/mypage/page_req.js');
 const mypageReqUpdateRouter = require('./routes/mypage/update_req.js');
 const mypageReqUpdateProcessRouter = require('./routes/mypage/update_req_process.js');
 const mypageReqDeleteProcessRouter = require('./routes/mypage/delete_req_process.js');
+const mypagePadLikeRouter = require('./routes/mypage/like_process_pad.js');
+const mypageCpadLikeRouter = require('./routes/mypage/like_process_cpad.js');
+const mypageCupLikeRouter = require('./routes/mypage/like_process_cup.js');
+const mypageTamponLikeRouter = require('./routes/mypage/like_process_tampon.js');
 
 const cpadRouter = require('./routes/store/cpad.js');
 const cupRouter = require('./routes/store/cup.js');
@@ -71,6 +75,10 @@ app.get('/mypage/page_req/page/:pageId', mypageReqPageRouter);
 app.get('/mypage/update/page_req/:pageId', mypageReqUpdateRouter);
 app.post('/mypage/update_req_process', mypageReqUpdateProcessRouter);
 app.post('/mypage/delete_req_process', mypageReqDeleteProcessRouter);
+app.post('/mypage/like_process/pad', mypagePadLikeRouter);
+app.post('/mypage/like_process/cpad', mypageCpadLikeRouter);
+app.post('/mypage/like_process/cup', mypageCupLikeRouter);
+app.post('/mypage/like_process/tampon', mypageTamponLikeRouter);
 
 app.get('/store/cpad', cpadRouter);
 app.get('/store/cup', cupRouter);
