@@ -54,7 +54,11 @@ router.get('/store/tampon', function (request, response) {
                 width: 100%; 
                 height: 850px;
             }
-        
+            button{
+                padding: 0;
+                border: none;
+                background: none;
+            }
             </style>`;
         
             var list = ' ';
@@ -75,7 +79,7 @@ router.get('/store/tampon', function (request, response) {
                                         <h5 class="card-text">제품명<br>: ${product}</h5>
                                         <form action="/store/like_process/tampon" method="post">
                                             <input type="hidden" name=id value='${id}'/>
-                                            <button type="submit"><img src='/images/heart.png'  width="20px" height="20px" alt="좋아요" ></button>
+                                            <button type="submit"><img src='/images/heart.png'  width="25px" height="25px" alt="좋아요" ></button>
                                         </form>
                                     </div>
                                 </div>
