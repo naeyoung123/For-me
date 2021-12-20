@@ -45,18 +45,13 @@ const app = express();
 
 app.use(express.static('public'));
 
-
+app.use(session({
+  secret:'my key',
+  resave: false,
+  saveUninitialize: true 
+}));
 app.use('/', mainRouter);
 app.use(express.static('public'));
-app.use(session({
-  key:'my key',
-  secret: 'secret',
-  resave: false,
-  saveUninitialize: true,
-  cookie:{
-    maxAge: 60 * 60 * 24 * 1
-  }
-}));
 app.get('/login', loginRouter);
 app.post('/login_process',loginProcessRouter);
 app.get('/logout_process',logoutProcessRouter);
