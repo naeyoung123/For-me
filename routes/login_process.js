@@ -14,15 +14,19 @@ router.post('/login_process', function (request, response) {
         var email = post.email;
         var password = post.password;
         db.query(`SELECT password, nickname FROM user WHERE email=?`, [email], function(err, res){
-            if(res[0].password == password){
-                request.session.is_logined = true;
-                request.session.email = email;
-                request.session.nickname = res[0].nickname;
-                request.session.save(function() {
-                    response.redirect(`/`);
-                });
-            } else {
-                response.send('Who?');
+            if (res[0] == undefined) {
+                response.end(`/not our user`);
+            } else{
+                if(res[0].password == password){
+                    request.session.is_logined = true;
+                    request.session.email = email;
+                    request.session.nickname = res[0].nickname;
+                    request.session.save(function() {
+                        response.redirect(`/`);
+                    });
+                } else {
+                    response.end(`/wrong password`);
+                }
             }
         });
     });
