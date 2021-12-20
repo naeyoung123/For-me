@@ -5,7 +5,7 @@ var author = require('../../lib/author.js');
 const db = require('../../db.js');
 
 router.get('/community/recommendation', function (request, response) {
-    db.query(`SELECT * FROM recommendation`, function(err, res){
+    db.query(`SELECT * FROM recommendation LEFT JOIN user ON recommendation.writer = user.email`, function(err, res){
         var title = '제품추천';
         var head = `
             <style>
@@ -37,7 +37,7 @@ router.get('/community/recommendation', function (request, response) {
                         <td>
                             <a href="/community/recommendation/page/${res[i].id}">${res[i].title}</a>
                         </td>
-                        <td>${res[i].writer}</td>
+                        <td>${res[i].nickname}</td>
                         <td>${res[i].date}</td>
                     </tr>
             `;

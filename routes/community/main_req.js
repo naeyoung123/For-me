@@ -5,7 +5,7 @@ var author = require('../../lib/author.js');
 const db = require('../../db.js');
 
 router.get('/community/requirement', function (request, response) {
-    db.query(`SELECT * FROM requirement`, function (err, res) {
+    db.query(`SELECT * FROM requirement LEFT JOIN user ON requirement.writer = user.email`, function (err, res) {
         var title = 'FORME에게 바란다.';
         var head = `
             <style>
@@ -37,7 +37,7 @@ router.get('/community/requirement', function (request, response) {
                     <td>
                         <a href="/community/requirement/page/${res[i].id}">${res[i].title}</a>
                     </td>
-                    <td>${res[i].writer}</td>
+                    <td>${res[i].nickname}</td>
                     <td>${res[i].date}</td>
                 </tr>
             `;
