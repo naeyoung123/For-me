@@ -8,32 +8,50 @@ router.get('/find_password', function (request, response) {
     var title = '비밀번호 찾기';
     var head = `
         <style>
-            .inputField {
-                background-color: white;
-                margin-bottom: 77px;
-            }
-            .signupBox {
-                background-color: white;
-                text-align: center;
-                border: 1px solid rgb(0, 0, 0);
-                margin-top: 300px;
-                border-radius: 30px;
-                padding-bottom: 30px;
-            }
-            .input-type {
-                color: black;
-                font-size: 1.0rem;
-                font-weight: 700;
-                border: 2px solid white;
-                box-shadow: 1px 1px 4px rgb(165, 165, 165);
-                display: inline-block;
-                width: 270px;
-                height: 35px;
-                margin-top: 8px;
-                margin-bottom: 10px;
-                border-radius: 10px;
-                padding: 3px 5px 3px 15px;
-            }
+
+                #signupLogo {
+                    color: black;
+                    font-size: 2.0rem;
+                    margin-bottom: 30px;
+                }
+
+                .signupBox {
+                    background-color: white;
+                    width: 50%;
+                    height: 60%;
+                    text-align: center;
+                    border: 1px solid rgb(0, 0, 0);
+                    margin-top: 150px;
+                    margin-left: 25%;
+                    border-radius: 30px;
+                    padding-bottom: 30px;
+                }
+
+                .inputField {
+                    background-color: white;
+                    margin-bottom: 77px;
+                }
+
+                .input-type {
+                    color: black;
+                    font-size: 1.0rem;
+                    font-weight: 700;
+                    border: 2px solid white;
+                    box-shadow: 1px 1px 4px rgb(165, 165, 165);
+                    display: inline-block;
+                    width: 270px;
+                    height: 35px;
+                    margin-top: 8px;
+                    margin-bottom: 10px;
+                    border-radius: 10px;
+                    padding: 3px 5px 3px 15px;
+                }
+
+                #password_signup {
+                    margin-bottom: 8px;
+                }
+
+                #pwpara,
                 #emailpara,
                 #nicknamepara {
                     color: black;
@@ -43,9 +61,44 @@ router.get('/find_password', function (request, response) {
                     padding-left: 60PX;
                     font-size: 1.1rem;
                 }
+
                 #emailpara {
                     margin-right: 260px;
                 }
+
+                #pwpara,
+                #nicknamepara {
+                    margin-right: 230px;
+                }
+
+                #passwordcheck_signup {
+                    margin-bottom: 8px;
+                }
+
+                #checkpara {
+                    margin-top: 0px;
+                    margin-left: 90px;
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                    color: grey;
+                }
+
+                #policyagree {
+                    color: black;
+                    background-color: white;
+                    width: 20px;
+                    height: 20px;
+                    border: none;
+                    box-shadow: none;
+                    vertical-align: bottom;
+                    margin-bottom: 0;
+                }
+
+                #policypara {
+                    font-weight: 700;
+                    color: black;
+                }
+
                 #signupSubmitBtn {
                     background-color: gray;
                     width: 270px;
@@ -61,23 +114,43 @@ router.get('/find_password', function (request, response) {
                     cursor: pointer;
                     margin-top: 20px;
                 }
+
+                #orpara {
+                    color: rgb(216, 216, 216);
+                    font-weight: 700;
+                    margin-top: 25px;
+                    margin-bottom: 25px;
+                }
+
+                #loginpara,
+                #link {
+                    margin-top: 10px;
+                    margin-bottom: 0;
+                    font-size: 0.9rem;
+                    color: rgb(143, 143, 143);
+                    font-weight: 700;
+                }
+
+                #link {
+                    color: black;
+                    text-decoration-line: none;
+                }
             </style>
             `;
             var body = `
             <main class="flex-shrink-0">
                 <div class="container">
                     <div class="signupBox">
-                    <h3>비밀번호 찾기</h3>
-                    <br><br>
-                    <form action="/find_password_process" method="post">
-                        <p id="emailpara">Email</p>
-                        <input type="email" name="email" class="input-type" placeholder="email" />
-                        <br>
-                        <p id="nicknamepara">Nickname</p>
-                        <input type="text" name="nickname" class="input-type" id="nickname" placeholder="nickname" />
-                        <br>
-                        <button type="submit" id="signupSubmitBtn">Find Password</button>
-                    </form>
+                        <p id="signupLogo"><strong>비밀번호 찾기</strong></p>
+                        <form action="/find_password_process" method="post" className="inputField">
+                            <p id="emailpara">Email</p>
+                            <input type="email" name="email" class="input-type" placeholder="email" />
+                            <br>
+                            <p id="nicknamepara">Nickname</p>
+                            <input type="text" name="nickname" class="input-type" placeholder="nickname" />
+                            <br>
+                            <button type="submit" id="signupSubmitBtn">Find Password</button>
+                        </form>
                     </div>
                 </div>
             </main>
