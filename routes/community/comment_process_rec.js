@@ -3,6 +3,7 @@ var router = express.Router();
 var template = require('../../lib/template.js');
 const db = require('../../db.js');
 var qs = require('querystring');
+var moment= require('moment');
 
 router.post('/community/recommendation/page/:pageId/comment_process', function (request, response) {
     var body = ``;
@@ -13,7 +14,7 @@ router.post('/community/recommendation/page/:pageId/comment_process', function (
         var post = qs.parse(body);
         var content_id = post.content_id;
         var content = post.content;
-        var date = new Date();
+        var date = moment().format("YYYY-MM-DD");
         var writer = request.session.email;
         db.query(`INSERT INTO comment_rec (content_id, content, date, writer) VALUES(?, ?, ?, ?)`, [content_id, content, date, writer], function(err, res){
             if(err) throw err;

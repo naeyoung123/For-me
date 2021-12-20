@@ -3,8 +3,13 @@ var router = express.Router();
 var template = require('../../lib/template.js');
 const db = require('../../db.js');
 var qs = require('querystring');
+var moment= require('moment');
 
 router.post('/community/recommendation/create_process', function (request, response) {
+    if(author.isOwner(request, response) === false){
+        response.redirect('/');
+        return false;
+    }
     var body = ``;
     request.on('data', function(data){
         body = body + data;
@@ -13,7 +18,7 @@ router.post('/community/recommendation/create_process', function (request, respo
         var post = qs.parse(body);
         var title = post.title;
         var content = post.content;
-        var date = new Date();
+        var date = moment().format("YYYY-MM-DD");
         var writer = request.session.email;
         db.query(`INSERT INTO recommendation (title, content, date, writer) VALUES(?, ?, ?, ?)`, [title, content, date, writer], function(err, res){
             if(err) throw err;

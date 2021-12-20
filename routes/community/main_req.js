@@ -33,7 +33,7 @@ router.get('/community/requirement', function (request, response) {
         while (i < res.length) {
             list += `
                 <tr>
-                    <td>${res[i].id}</td>
+                    <td>${i+1}</td>
                     <td>
                         <a href="/community/requirement/page/${res[i].id}">${res[i].title}</a>
                     </td>
