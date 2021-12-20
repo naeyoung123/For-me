@@ -170,8 +170,8 @@ router.get('/login', function (request, response) {
                         <button type="submit" id="signupSubmitBtn" onClick=login()>Log In</button>
     
                         <p id="orpara">─────────────　OR　─────────────</p>
-                        <p id="loginpara">For got your password?<a href="findpw" id="link">　Find Password</b></a></p>
-                        <p id="loginpara">Dont have an account?<a href="signup" id="link">　Sign Up</b></a></p>
+                        <p id="loginpara">For got your password?<a href="/find_password" id="link">　Find Password</b></a></p>
+                        <p id="loginpara">Dont have an account?<a href="/signup" id="link">　Sign Up</b></a></p>
                     </form>
                 </div>
             </div>
