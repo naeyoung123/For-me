@@ -5,7 +5,7 @@ var author = require('../../lib/author.js');
 const db = require('../../db.js');
 var qs = require('querystring');
 
-router.post('/store/like_process/pad', function (request, response) {
+router.post('/store/like_process/cup', function (request, response) {
     if(author.isOwner(request, response) === false){
         response.redirect('/');
         return false;

@@ -11,11 +11,7 @@ router.post('/mypage/delete_req_process', function (request, response) {
     });
     request.on('end', function(){
         var post = qs.parse(body);
-        var id_ = post.id;
-        var id = '';
-        for(i = 0; i < id_.length-1; i++){
-            id += id_[i];
-        }
+        var id = post.id;
         db.query(`DELETE FROM requirement WHERE id=?`, [id], function(err, res){
             if(err) throw err;
             response.writeHead(302, {Location: `/mypage`});
