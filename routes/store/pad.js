@@ -59,6 +59,7 @@ router.get('/store/pad', function (request, response) {
         
             var list = ' ';
             for (var i = 0; i < res.length; i++) {
+                var id = res[i].id;
                 var company = res[i].company;
                 var product = res[i].brand + ' ' + res[i].product;
                 var address = res[i].address;
@@ -72,12 +73,16 @@ router.get('/store/pad', function (request, response) {
                                     <div class="card-body">
                                         <h5 class="card-text">제조사명<br>: ${company}</h5><br>
                                         <h5 class="card-text">제품명<br>: ${product}</h5>
+                                        <form action="/store/like_process/tampon" method="post">
+                                            <input type="hidden" name=id value='${id}'/>
+                                            <button type="submit"><img src='images/heart.png'  width="20px" height="20px" alt="좋아요" ></button>
+                                        </form>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                `;
+                `; 
             }
 
 
