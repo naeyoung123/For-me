@@ -66,7 +66,7 @@ router.get('/mypage', function (request, response) {
                                 transform: translateY(-205px);
                               }
                 
-                              #card .card-body h5 {
+                              #card .card-body h6 {
                                 color: #ffffff;
                                 text-align: left;
                               }
@@ -76,7 +76,7 @@ router.get('/mypage', function (request, response) {
                                 flex-wrap : wrap;
                                 width: 80%; 
                               }
-                              button{
+                              #button1{
                                 width:fit-content;
                                 display:block;
                                 border : 0; 
@@ -86,6 +86,12 @@ router.get('/mypage', function (request, response) {
                                 text-align: center;
                                 font-size : 15px;
                                 width : 100%;
+                              }
+
+                              #button2{
+                                padding: 0;
+                                border: none;
+                                background: none;
                               }
                         </style>
                     `;
@@ -102,7 +108,7 @@ router.get('/mypage', function (request, response) {
                                     </td>
                                     <td>${res1[i].writer}</td>
                                     <td>${res1[i].date}</td>
-                                    <td><a href="/mypage/page_rec/page/${res1[i].id}"><button>수정하기</button></a></td>
+                                    <td><a href="/mypage/page_rec/page/${res1[i].id}"><button id ="button1">수정하기</button></a></td>
                                 </tr>
                         `;
                     }
@@ -118,7 +124,7 @@ router.get('/mypage', function (request, response) {
                                     <td>
                                         <form action="/mypage/delete_com_process" method="post">
                                             <input type="hidden" name="id" value="${com[i].id}"/>
-                                            <button type="submit" >삭제하기</button>
+                                            <button type="submit" id ="button1" >삭제하기</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -131,7 +137,7 @@ router.get('/mypage', function (request, response) {
                                     <td>${res2[i].title}</td>
                                     <td>${res2[i].writer}</td>
                                     <td>${res2[i].date}</td>
-                                    <td><a href="/mypage/page_req/page/${res2[i].id}"><button>수정하기</button></a></td>
+                                    <td><a href="/mypage/page_req/page/${res2[i].id}"><button id ="button1">수정하기</button></a></td>
                                 </tr>
                         `;
                     }
@@ -143,11 +149,11 @@ router.get('/mypage', function (request, response) {
                                         <div id="li">
                                             <img src="${pad[i].image}" style= "position:absoulte; width:100%; height:100%;">
                                             <div class="card-body">
-                                                <h5 class="card-text">제조사명<br>: ${pad[i].company}</h5><br>
-                                                <h5 class="card-text">제품명<br>: ${pad[i].product}</h5>
+                                                <h6 class="card-text">제조사명<br>: ${pad[i].company}</h6><br>
+                                                <h6 class="card-text">제품명<br>: ${pad[i].product}</h6>
                                                 <form action="/mypage/like_process/pad" method="post">
                                                     <input type="hidden" name=id value='${pad[i].id}'/>
-                                                    <button type="submit"><img src="images/heart.png"  width="20px" height="20px" alt="좋아요" ></button>
+                                                    <button type="submit" id ="button2" ><img src='/images/heart.png'  width="25px" height="25px" alt="좋아요" ></button>
                                                 </form>
                                             </div>
                                         </div>
@@ -165,11 +171,11 @@ router.get('/mypage', function (request, response) {
                                         <div id="li">
                                             <img src="${cpad[i].image}" style= "position:absoulte; width:100%; height:100%;">
                                             <div class="card-body">
-                                                <h5 class="card-text">제조사명<br>: ${cpad[i].company}</h5><br>
-                                                <h5 class="card-text">제품명<br>: ${cpad[i].product}</h5>
+                                                <h6 class="card-text">제조사명<br>: ${cpad[i].company}</h6><br>
+                                                <h6 class="card-text">제품명<br>: ${cpad[i].product}</h6>
                                                 <form action="/mypage/like_process/cpad" method="post">
                                                     <input type="hidden" name=id value='${cpad[i].id}'/>
-                                                    <button type="submit"><img src="images/heart.png"  width="20px" height="20px" alt="좋아요" ></button>
+                                                    <button type="submit" id ="button2" ><img src='/images/heart.png'  width="25px" height="25px" alt="좋아요" ></button>
                                                 </form>
                                             </div>
                                         </div>
@@ -187,11 +193,11 @@ router.get('/mypage', function (request, response) {
                                         <div id="li">
                                             <img src="${cup[i].image}" style= "position:absoulte; width:100%; height:100%;">
                                             <div class="card-body">
-                                                <h5 class="card-text">제조사명<br>: ${cup[i].company}</h5><br>
-                                                <h5 class="card-text">제품명<br>: ${cup[i].product}</h5>
+                                                <h6 class="card-text">제조사명<br>: ${cup[i].company}</h6><br>
+                                                <h6 class="card-text">제품명<br>: ${cup[i].product}</h6>
                                                 <form action="/mypage/like_process/cup" method="post">
                                                     <input type="hidden" name=id value='${cup[i].id}'/>
-                                                    <button type="submit"><img src="images/heart.png"  width="20px" height="20px" alt="좋아요" ></button>
+                                                    <button type="submit" id ="button2" ><img src='/images/heart.png'  width="25px" height="25px" alt="좋아요" ></button>
                                                 </form>
                                             </div>
                                         </div>
@@ -209,11 +215,11 @@ router.get('/mypage', function (request, response) {
                                         <div id="li">
                                             <img src="${tampon[i].image}" style= "position:absoulte; width:100%; height:100%;">
                                             <div class="card-body">
-                                                <h5 class="card-text">제조사명<br>: ${tampon[i].company}</h5><br>
-                                                <h5 class="card-text">제품명<br>: ${tampon[i].product}</h5>
+                                                <h6 class="card-text">제조사명<br>: ${tampon[i].company}</h6><br>
+                                                <h6 class="card-text">제품명<br>: ${tampon[i].product}</h6>
                                                 <form action="/mypage/like_process/tampon" method="post">
                                                     <input type="hidden" name=id value='${tampon[i].id}'/>
-                                                    <button type="submit"><img src="images/heart.png"  width="20px" height="20px" alt="좋아요" ></button>
+                                                    <button type="submit" id ="button2"><img src='/images/heart.png'  width="25px" height="25px" alt="좋아요" ></button>
                                                 </form>
                                             </div>
                                         </div>
