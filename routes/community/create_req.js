@@ -5,6 +5,10 @@ var author = require('../../lib/author.js');
 const db = require('../../db.js');
 
 router.get('/community/requirement/create', function (request, response) {
+    if(author.isOwner(request, response) === false){
+        response.redirect('/community/requirement');
+        return false;
+    }
     var title = '건의글쓰기';
     var head = `
     <style>

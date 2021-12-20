@@ -5,6 +5,10 @@ var author = require('../../lib/author.js');
 const db = require('../../db.js');
 
 router.get('/community/recommendation/create', function (request, response) {
+    if(author.isOwner(request, response) === false){
+        response.redirect('/community/recommendation');
+        return false;
+    }
     var title = '추천글쓰기';
     var head = `
     <style>
