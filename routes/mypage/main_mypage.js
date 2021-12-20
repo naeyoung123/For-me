@@ -61,11 +61,12 @@ router.get('/mypage', function (request, response) {
                                 padding: 0;
                                 overflow: hidden;
                                 position: relative;
+                                float : left;
                               }
                 
                               #card #li:hover .card-body {
                                 opacity: 1;
-                                transform: translateY(-210px);
+                                transform: translateY(-205px);
                               }
                 
                               #card .card-body h5 {
@@ -73,8 +74,11 @@ router.get('/mypage', function (request, response) {
                                 text-align: left;
                               }
                               .content{
-                                width: 100%; 
-                                height: 850px;
+                                display : flex;
+                                justify-content : flex-start;
+                                flex-wrap : wrap;
+                                width: 80%; 
+                                
                               }
                         </style>
                     `;
@@ -124,7 +128,7 @@ router.get('/mypage', function (request, response) {
                                     </a>
                                 </div>
                             </div>
-                            <br>
+                   
                         `;
                     }
                     for(i = 0; i < cpad.length; i++) {
@@ -146,7 +150,7 @@ router.get('/mypage', function (request, response) {
                                     </a>
                                 </div>
                             </div>
-                            <br>
+                 
                         `;
                     }
                     for(i = 0; i < cup.length; i++) {
@@ -168,7 +172,7 @@ router.get('/mypage', function (request, response) {
                                     </a>
                                 </div>
                             </div>
-                            <br>
+ 
                         `;
                     }
                     for(i = 0; i < tampon.length; i++) {
@@ -190,7 +194,7 @@ router.get('/mypage', function (request, response) {
                                     </a>
                                 </div>
                             </div>
-                            <br>
+                          
                         `;
                     }
                     var body = `
@@ -234,6 +238,7 @@ router.get('/mypage', function (request, response) {
                                     ${list_req}
                                 </table>
                                 <br><br>
+                                <img src="images/likelist.png" style = "float:left; margin-left : 10%;" width="180px">
                                 <div class="content">
                                     ${list_store}
                                 </div>
