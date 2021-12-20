@@ -16,7 +16,6 @@ router.get('/mypage', function (request, response) {
                 db.query(`SELECT * FROM cpad LEFT JOIN liked ON cpad.id=liked.store_id WHERE user_id=? and type=?`, [request.session.email, 1], function(err3, cpad){
                 db.query(`SELECT * FROM cup LEFT JOIN liked ON cup.id=liked.store_id WHERE user_id=? and type=?`, [request.session.email, 2], function(err3, cup){
                 db.query(`SELECT * FROM tampon LEFT JOIN liked ON tampon.id=liked.store_id WHERE user_id=? and type=?`, [request.session.email, 3], function(err3, tampon){
-                    console.log(pad)
                     var title = '마이페이지';
                     var head = `
                         <style>
