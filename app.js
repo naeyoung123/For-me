@@ -26,6 +26,7 @@ const mypagePadLikeRouter = require('./routes/mypage/like_process_pad.js');
 const mypageCpadLikeRouter = require('./routes/mypage/like_process_cpad.js');
 const mypageCupLikeRouter = require('./routes/mypage/like_process_cup.js');
 const mypageTamponLikeRouter = require('./routes/mypage/like_process_tampon.js');
+const mypageComDeleteProcessRouter = require('./routes/mypage/delete_com_process.js');
 
 const cpadRouter = require('./routes/store/cpad.js');
 const cupRouter = require('./routes/store/cup.js');
@@ -41,7 +42,7 @@ const recommendationRouter = require('./routes/community/main_rec.js');
 const createRecRouter = require('./routes/community/create_rec.js');
 const createRecProcessRouter = require('./routes/community/create_rec_process.js');
 const recommendationPageRouter = require('./routes/community/page_rec.js');
-
+const recommendationCommentRouter = require('./routes/community/comment_process_rec.js');
 const requirementRouter = require('./routes/community/main_req.js');
 const createReqRouter = require('./routes/community/create_req.js');
 const createReqProcessRouter = require('./routes/community/create_req_process.js');
@@ -83,6 +84,7 @@ app.post('/mypage/like_process/pad', mypagePadLikeRouter);
 app.post('/mypage/like_process/cpad', mypageCpadLikeRouter);
 app.post('/mypage/like_process/cup', mypageCupLikeRouter);
 app.post('/mypage/like_process/tampon', mypageTamponLikeRouter);
+app.post('/mypage/delete_com_process', mypageComDeleteProcessRouter);
 
 app.get('/store/cpad', cpadRouter);
 app.get('/store/cup', cupRouter);
@@ -98,7 +100,7 @@ app.get('/community/recommendation', recommendationRouter);
 app.get('/community/recommendation/create', createRecRouter);
 app.post('/community/recommendation/create_process', createRecProcessRouter);
 app.get('/community/recommendation/page/:pageId', recommendationPageRouter);
-
+app.post('/community/recommendation/page/:pageId/comment_process', recommendationCommentRouter);
 app.get('/community/requirement', requirementRouter);
 app.get('/community/requirement/create', createReqRouter);
 app.post('/community/requirement/create_process', createReqProcessRouter);
