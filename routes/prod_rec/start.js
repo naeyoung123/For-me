@@ -2,38 +2,42 @@ const main = document.querySelector("#main");
 const qna = document.querySelector("#qna");
 const result = document.querySelector("#result");
 const endPoint = 7;
-const select = [];
+const select = [0, 0, 0, 0];
 
 function calResult(){
-    var pointArray = [
-        { name: 'pad', value: 0, key: 0 },
-        { name: 'cotton', value: 0, key: 0},
-        { name: 'cup', value: 0, key: 0},
-        { name: 'tampon', value: 0, key: 0}
-    ]
-    for(let i = 0; i < endPoint; i++){
-        var target = QnAList[i].a[select[i]];
-        for(let j = 0; j < target.type.length; j++){
-            for(let k = 0; k< pointArray.length; k++){
-                if(target.type[j] === pointArray[k].name){
-                    pointArray[k].value += 1;
-                }
-            }
-        }
-    }
+    // var pointArray = [
+    //     { name: 'pad', value: 0, key: 0 },
+    //     { name: 'cotton', value: 0, key: 0},
+    //     { name: 'cup', value: 0, key: 0},
+    //     { name: 'tampon', value: 0, key: 0}
+    // ]
+    // for(let i = 0; i < endPoint; i++){
+    //     var target = QnAList[i].a[select[i]];
+    //     for(let j = 0; j < target.type.length; j++){
+    //         for(let k = 0; k< pointArray.length; k++){
+    //             if(target.type[j] === pointArray[k].name){
+    //                 pointArray[k].value += 1;
+    //             }
+    //         }
+    //     }
+    // }
 
-    var resultArray = pointArray.sort(function (a, b){
-        if(a.value > b.value){
-            return -1;
-        }
-        if(a.value < b.value){
-            return 1;
-        }
-        return 0;
-    });
+    // var resultArray = pointArray.sort(function (a, b){
+    //     if(a.value > b.value){
+    //         return -1;
+    //     }
+    //     if(a.value < b.value){
+    //         return 1;
+    //     }
+    //     return 0;
+    // });
 
-    let resultword = resultArray[0].key;
-    return resultword;
+    // let resultword = resultArray[0].key;
+    // return resultword;
+
+    console.log(select);
+    var result = select.indexOf(Math.max(...select));
+    return result;
 }
 
 function setResult(){
@@ -43,10 +47,10 @@ function setResult(){
 
     var resultImg = document.createElement('img');
     const imgDiv = document.querySelector('#resultImg');
-    var imgURL = 'images/image-' + point + '.png';
+    var imgURL = '../../public/images/image-' + point + '.png';
     resultImg.src = imgURL;
     resultImg.alt = point;
-    resultImg.classList('img-fluid');
+    resultImg.classList.add('img-fluid');
     imgDiv.appendChild(resultImg);
 
     const resultDesc = document.querySelector('.resultDesc');

@@ -10,8 +10,6 @@ router.get('/prod_rec/qna', function (request, response) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-
     <style>
 
     body{
@@ -91,7 +89,7 @@ router.get('/prod_rec/qna', function (request, response) {
             <section id="main" class="mx-auto my-5 py-5 px-3">
               <h1>나에게 딱맞는 월경용품 찾기</h1>
               <div class="col-lg-6 col-md-8 col-sm-10 col-12 mx-auto">
-                <img src=" " alt="mainImage" class="img-fluid">
+                <img src="../../public/images/main2.png" alt="mainImage" class="img-fluid">
               </div>
               <p>
                 시작하기 버튼을 눌러 시작해 주세요.
@@ -114,7 +112,7 @@ router.get('/prod_rec/qna', function (request, response) {
               <div class="resultname">
               
               </div>
-              <div id="resultImg" class="col-lg-6 col-md-8 col-sm-10 col-mx-auto">
+              <div id="resultImg" class="col-mx-auto">
               
               </div>
               <div class="resultDesc">
