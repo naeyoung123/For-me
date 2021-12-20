@@ -8,12 +8,41 @@ router.get('/prod_rec/qna', function (request, response) {
     var title = 'For me 나를 위해';
     var head = `
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
     <style>
-    .status{
+
+    body{
+      background-color: lavender;
+  }
+  
+  #qna{
+      display: none;
+  }
+  
+  .qBox{
+      background-color: ivory;
+      text-align: center;
+      border-radius: 20px;
+      font-size: 24px;
+      width: 80%;
+  }
+  
+  .answerList{
+      background-color: ivory;
+      border-radius: 20px;
+      display: block;
+      width: 80%;
+      border: 0px;
+      font-size: 20px;
+  }
+  
+  .answerList:hover, .answerList:focus{
+      background-color: rgb(98, 0, 128);
+      color: ivory;
+  }
+  
+  
+  .status{
       height: 20px;
       width: 80%;
       background-color: ivory;
@@ -25,6 +54,31 @@ router.get('/prod_rec/qna', function (request, response) {
       border-radius: 20px;
       background-color: purple;
   }
+  
+  #result{
+      display: none;
+      background-color: lavender;
+      width: 80%;
+      text-align: center;
+      border-radius: 20px;
+  }
+  
+  
+  .resultname{
+      font-size: 26px;
+    }
+    
+    .resultDesc{
+      font-size: 20px;
+    }
+  
+    
+    .gohome:hover, .gohome:focus {
+      background-color: whitesmoke;
+      color: pink;
+    }
+    
+
     </style>
     `;
     var body = `
@@ -34,7 +88,7 @@ router.get('/prod_rec/qna', function (request, response) {
             <section id="main" class="mx-auto my-5 py-5 px-3">
               <h1>나에게 딱맞는 월경용품 찾기</h1>
               <div class="col-lg-6 col-md-8 col-sm-10 col-12 mx-auto">
-                <img src=" " alt="mainImage" class="img-fluid">
+                <img src="/images/main2.png" alt="mainImage" class="img-fluid">
               </div>
               <p>
                 시작하기 버튼을 눌러 시작해 주세요.
@@ -53,10 +107,17 @@ router.get('/prod_rec/qna', function (request, response) {
                 </div>
             </section>
             <section id="result">
-              <h1>나에게 딱맞는 월경용품 찾기</h1>
-              <div class="col-lg-6 col-md-8 col-sm-10 col-12 mx-auto">
-                <img src=" " alt="mainImage" class="img-fluid">
+              <h1>나에게 딱맞는 월경용품 찾기 결과는? </h1>
+              <div class="resultname">
+              
               </div>
+              <div id="resultImg" class="col-mx-auto">
+              
+              </div>
+              <div class="resultDesc">
+              
+              </div>
+              <button type="button">공유하기</button>
             </section>
             <script src="./question.js" charset="utf-8"></script>
             <script src="./start.js" charset="utf-8"></script>

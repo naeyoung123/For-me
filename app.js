@@ -12,6 +12,7 @@ const logoutProcessRouter = require('./routes/logout_process.js');
 const signupRouter = require('./routes/signup.js');
 const signupProcessRouter = require('./routes/signup_process.js');
 
+const prodRecQnaRouter = require('./routes/prod_rec/qna.js');
 
 const myPageRouter = require('./routes/mypage/main_mypage.js');
 const mypageRecPageRouter = require('./routes/mypage/page_rec.js');
@@ -70,6 +71,7 @@ app.post('/signup_process', signupProcessRouter);
 app.post('/login_process',loginProcessRouter);
 app.get('/logout_process', logoutProcessRouter);
 
+app.get('/prod_rec/qna', prodRecQnaRouter);
 
 app.get('/mypage', myPageRouter);
 app.get('/mypage/page_rec/page/:pageId', mypageRecPageRouter);
