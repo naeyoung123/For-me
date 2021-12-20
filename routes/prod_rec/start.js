@@ -43,9 +43,10 @@ function setResult(){
 
     var resultImg = document.createElement('img');
     const imgDiv = document.querySelector('#resultImg');
-    var imgURL = 'img/image-' + point + '.png';
+    var imgURL = 'images/image-' + point + '.png';
     resultImg.src = imgURL;
     resultImg.alt = point;
+    resultImg.classList('img-fluid');
     imgDiv.appendChild(resultImg);
 
     const resultDesc = document.querySelector('.resultDesc');
@@ -68,6 +69,11 @@ function addAnswer(answerText, qIdx, idx) {
     var a = document.querySelector('.answerBox');
     var answer = document.createElement('button');
     answer.classList.add('answerList');
+    answer.classList.add('my-3');
+    answer.classList.add('py-3');
+    answer.classList.add('mx-auto');
+    answer.classList.add('fadeIn');
+
     a.appendChild(answer);
     answer.innerHTML = answerText;
 
@@ -75,8 +81,8 @@ function addAnswer(answerText, qIdx, idx) {
         var children = document.querySelectorAll('.answerList');
         for (let i = 0; i < children.length; i++) {
             children[i].disabled = true;
-            children[i].style.WebitAnimation = "fadeOut 0.5s";
-            children[i].style.animation = "fadeOut 0.5s";
+            children[i].style.WebitAnimation = "fadeOut 0.3s";
+            children[i].style.animation = "fadeOut 0.3s";
         }
         setTimeout(() =>{
             var target = QnAList[qIdx].a[idx].type;
@@ -109,7 +115,7 @@ function begin() {
     main.style.WebitAnimation = "fadeOut 1s";
     main.style.animation = "fadeOut 1s";
     setTimeout(() => {
-        select[qIdx] = idx; 
+        
         qna.style.WebitAnimation = "fadeIn 1s";
         qna.style.animation = "fadeIn 1s";
         setTimeout(() => {

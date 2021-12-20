@@ -13,7 +13,39 @@ router.get('/prod_rec/qna', function (request, response) {
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
     <style>
-    .status{
+
+    body{
+      background-color: lavender;
+  }
+  
+  #qna{
+      display: none;
+  }
+  
+  .qBox{
+      background-color: ivory;
+      text-align: center;
+      border-radius: 20px;
+      font-size: 24px;
+      width: 80%;
+  }
+  
+  .answerList{
+      background-color: ivory;
+      border-radius: 20px;
+      display: block;
+      width: 80%;
+      border: 0px;
+      font-size: 20px;
+  }
+  
+  .answerList:hover, .answerList:focus{
+      background-color: rgb(98, 0, 128);
+      color: ivory;
+  }
+  
+  
+  .status{
       height: 20px;
       width: 80%;
       background-color: ivory;
@@ -25,10 +57,30 @@ router.get('/prod_rec/qna', function (request, response) {
       border-radius: 20px;
       background-color: purple;
   }
-
+  
   #result{
-    display: none;
+      display: none;
+      background-color: lavender;
+      width: 80%;
+      text-align: center;
+      border-radius: 20px;
   }
+  
+  
+  .resultname{
+      font-size: 26px;
+    }
+    
+    .resultDesc{
+      font-size: 20px;
+    }
+  
+    
+    .gohome:hover, .gohome:focus {
+      background-color: whitesmoke;
+      color: pink;
+    }
+    
 
     </style>
     `;
