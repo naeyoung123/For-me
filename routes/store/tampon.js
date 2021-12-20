@@ -75,7 +75,7 @@ router.get('/store/tampon', function (request, response) {
                                         <h5 class="card-text">제품명<br>: ${product}</h5>
                                         <form action="/store/like_process/tampon" method="post">
                                             <input type="hidden" name=id value='${id}'/>
-                                            <button type="submit"><img src='images/heart.png'  width="20px" height="20px" alt="좋아요" ></button>
+                                            <button type="submit"><img src='/images/heart.png'  width="20px" height="20px" alt="좋아요" ></button>
                                         </form>
                                     </div>
                                 </div>
