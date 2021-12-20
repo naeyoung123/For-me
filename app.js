@@ -11,7 +11,9 @@ const loginProcessRouter = require('./routes/login_process.js');
 const logoutProcessRouter = require('./routes/logout_process.js');
 const signupRouter = require('./routes/signup.js');
 const signupProcessRouter = require('./routes/signup_process.js');
-
+const findPwRouter = require('./routes/accounts/find_password.js');
+const findPwProcessRouter = require('./routes/accounts/find_password_process.js');
+const findPwSuccessRouter = require('./routes/accounts/find_password_success.js');
 
 const myPageRouter = require('./routes/mypage/main_mypage.js');
 const mypageRecPageRouter = require('./routes/mypage/page_rec.js');
@@ -70,7 +72,9 @@ app.get('/signup', signupRouter);
 app.post('/signup_process', signupProcessRouter);
 app.post('/login_process',loginProcessRouter);
 app.get('/logout_process', logoutProcessRouter);
-
+app.get('/find_password', findPwRouter);
+app.post('/find_password_process', findPwProcessRouter);
+app.get('/find_password/success/:email', findPwSuccessRouter);
 
 app.get('/mypage', myPageRouter);
 app.get('/mypage/page_rec/page/:pageId', mypageRecPageRouter);
