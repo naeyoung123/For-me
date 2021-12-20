@@ -10,11 +10,11 @@ router.get('/logout_process', function(req,res){
 
         req.session.destroy(function(err){
             if(err) throw err;
-            res.redirect('/');
+            res.redirect('/store/pad');
         });
     }
     else{
-        res.redirect('/');
+        res.redirect('/store/pad');
     }
 });
 
