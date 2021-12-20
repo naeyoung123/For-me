@@ -45,7 +45,7 @@ router.get('/community/recommendation/page/:pageId', function (request, response
                 table, td ,th {
                     border : 2px solid gray;
                     border-collapse : collapse;
-                    padding : 15px;
+                    padding : 10px;
                 }
             </style>
             `;
@@ -68,16 +68,24 @@ router.get('/community/recommendation/page/:pageId', function (request, response
                     <hr>
                     <h5 class = "content2" name="content">${res[0].content}</h5>
                     </div>
+                    <br><br><br>
                     <div>
                         <form action="/community/recommendation/page/:pageId/comment_process" method="post">
                             <input type="hidden" name="content_id" value="${res[0].id}"/>
-                            <input type="text" name="content" placeholder="댓글"/>
-                            <button type="submit">저장</button>
+                            <input type="textarea" name="content" placeholder="댓글" style = "width : 800px; height : 50px;"><br>
+                            <button type="submit" class="btn btn-sm btn-secondary" style = "float:right; margin-right : 20%">댓글 작성</button><br>
                         </form>
                     </div>
-                    <table width="80%">
+                    <center>
+                    <table width="800px">
+                    <tr style = "background-color : #C2C2C2;">
+                        <td><b>댓글</b></td>
+                        <td><b>닉네임</b></td>
+                     </tr>
                         ${list_com}
                     </table>
+                    </center>
+                    <br><br><br>
                 </div>
             </main>
             `;
