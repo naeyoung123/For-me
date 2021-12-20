@@ -5,6 +5,7 @@ var author = require('../lib/author.js');
 
 router.get('/', function (request, response) {
     var title = 'For me 나를 위해';
+    var authStatusUI = '<a class="nav-link" href="/login">로그인</a>';
     var head = ``;
     var body = `
     <main class="flex-shrink-0">
