@@ -15,7 +15,7 @@ router.post('/login_process', function (request, response) {
         var password = post.password;
         db.query(`SELECT password, nickname FROM user WHERE email=?`, [email], function(err, res){
             if (res[0] == undefined) {
-                response.end(`/not our user`);
+                response.redirect(`/login`);
             } else{
                 if(res[0].password == password){
                     request.session.is_logined = true;
@@ -25,7 +25,7 @@ router.post('/login_process', function (request, response) {
                         response.redirect(`/`);
                     });
                 } else {
-                    response.end(`/wrong password`);
+                    response.redirect(`/login`);
                 }
             }
         });
