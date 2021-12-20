@@ -5,6 +5,7 @@ var db = mysql.createConnection({
   user     : 'root',
   password : 'password!',
   database : 'forme',
+  port: '3306',
   dateStrings: 'date'
 });
 
