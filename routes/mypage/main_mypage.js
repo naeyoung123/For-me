@@ -75,7 +75,17 @@ router.get('/mypage', function (request, response) {
                                 justify-content : flex-start;
                                 flex-wrap : wrap;
                                 width: 80%; 
-                                
+                              }
+                              button{
+                                width:fit-content;
+                                display:block;
+                                border : 0; 
+                                outline : 0; 
+                                background-color : #FFFFFF; 
+                                margin: 0; 
+                                text-align: center;
+                                font-size : 15px;
+                                width : 100%;
                               }
                         </style>
                     `;
@@ -92,7 +102,7 @@ router.get('/mypage', function (request, response) {
                                     </td>
                                     <td>${res1[i].writer}</td>
                                     <td>${res1[i].date}</td>
-                                    <td><a href="/mypage/page_rec/page/${res1[i].id}">수정하기</a></td>
+                                    <td><a href="/mypage/page_rec/page/${res1[i].id}"><button>수정하기</button></a></td>
                                 </tr>
                         `;
                     }
@@ -108,7 +118,7 @@ router.get('/mypage', function (request, response) {
                                     <td>
                                         <form action="/mypage/delete_com_process" method="post">
                                             <input type="hidden" name="id" value="${com[i].id}"/>
-                                            <button type="submit">삭제</button>
+                                            <button type="submit" >삭제하기</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -121,7 +131,7 @@ router.get('/mypage', function (request, response) {
                                     <td>${res2[i].title}</td>
                                     <td>${res2[i].writer}</td>
                                     <td>${res2[i].date}</td>
-                                    <td><a href="/mypage/page_req/page/${res2[i].id}">수정하기</a></td>
+                                    <td><a href="/mypage/page_req/page/${res2[i].id}"><button>수정하기</button></a></td>
                                 </tr>
                         `;
                     }
@@ -231,12 +241,12 @@ router.get('/mypage', function (request, response) {
                                 <table width = "80%">
                                 <tr style = "background-color : #EEEEEE;">
                                     <img src="images/mypage2.png" style = "float:left; margin-left : 10%;" width="300px">
-                                   
-                                    <td width = "10%"><b>No</b></td>
-                                    <td width = "40%"><b>제목</b></td>
+
+                                    <td width = "7"><b>No</b></td>
+                                    <td width = "38%"><b>제목</b></td>
                                     <td width = "20%"><b>작성자</b></td>
-                                    <td width = "20%"><b>작성일</b></td>
-                                    <td width = "10%"><b>글수정</b></td>
+                                    <td width = "22%"><b>작성일</b></td>
+                                    <td width = "13%"><b>글수정</b></td>
                                   
                                 </tr>
                                     ${list_rec}
@@ -244,13 +254,12 @@ router.get('/mypage', function (request, response) {
                                 <br><br>
                                 <table width = "80%">
                                 <tr style = "background-color : #EEEEEE;">
-                                    <img src="images/mypage2.png" style = "float:left; margin-left : 10%;" width="300px">
-
-                                    <td width = "10%"><b>No</b></td>
-                                    <td width = "40%"><b>댓글</b></td>
+                                    <img src="images/mypage4.png" style = "float:left; margin-left : 10%;" width="300px">
+                                    <td width = "7"><b>No</b></td>
+                                    <td width = "38%"><b>제목</b></td>
                                     <td width = "20%"><b>작성자</b></td>
-                                    <td width = "20%"><b>작성일</b></td>
-                                    <td width = "10%"><b>댓글삭제</b></td>
+                                    <td width = "22%"><b>작성일</b></td>
+                                    <td width = "13%"><b>댓글삭제</b></td>
                                   
                                 </tr>
                                     ${list_com}
@@ -259,11 +268,11 @@ router.get('/mypage', function (request, response) {
                                 <img src="images/mypage3.png" style = "float:left; margin-left : 10%;"  width="380px">
                                 <table width = "80%">
                                 <tr style = "background-color : #EEEEEE;">
-                                    <td width = "10%"><b>No</b></td>
-                                    <td width = "40%"><b>제목</b></td>
+                                    <td width = "7"><b>No</b></td>
+                                    <td width = "38%"><b>제목</b></td>
                                     <td width = "20%"><b>작성자</b></td>
-                                    <td width = "20%"><b>작성일</b></td>
-                                    <td width = "10%"><b>글수정</b></td>
+                                    <td width = "22%"><b>작성일</b></td>
+                                    <td width = "13%"><b>글수정</b></td>
                                 </tr>
                                     ${list_req}
                                 </table>

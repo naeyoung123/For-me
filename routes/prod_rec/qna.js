@@ -90,9 +90,6 @@ router.get('/prod_rec/qna', function (request, response) {
               <div class="col-lg-6 col-md-8 col-sm-10 col-12 mx-auto">
                 <img src="/images/main2.png" alt="mainImage" class="img-fluid">
               </div>
-              <p>
-                시작하기 버튼을 눌러 시작해 주세요.
-              </p>
               <button type="button" class="btn btn-outline-danger mt-3" 
               onclick="js:begin()">시작하기</button>
             </section>
