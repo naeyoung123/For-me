@@ -27,6 +27,10 @@ const cupRouter = require('./routes/store/cup.js');
 const padRouter = require('./routes/store/pad.js');
 const tamponRouter = require('./routes/store/tampon.js');
 const meritRouter = require('./routes/store/merit.js');
+const likePadRouter = require('./routes/store/pad_like_process.js');
+const likeCpadRouter = require('./routes/store/cpad_like_process.js');
+const likeCupRouter = require('./routes/store/cup_like_process.js');
+const likeTamponRouter = require('./routes/store/tampon_like_process.js');
 
 const recommendationRouter = require('./routes/community/main_rec.js');
 const createRecRouter = require('./routes/community/create_rec.js');
@@ -73,6 +77,10 @@ app.get('/store/cup', cupRouter);
 app.get('/store/pad', padRouter);
 app.get('/store/tampon', tamponRouter);
 app.get('/store/merit', meritRouter);
+app.post('/store/like_process/pad', likePadRouter);
+app.post('/store/like_process/cpad', likeCpadRouter);
+app.post('/store/like_process/cup', likeCupRouter);
+app.post('/store/like_process/tampon', likeTamponRouter);
 
 app.get('/community/recommendation', recommendationRouter);
 app.get('/community/recommendation/create', createRecRouter);
