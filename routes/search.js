@@ -20,11 +20,7 @@ router.post('/search', function (request, response) {
                             var title = '검색결과';
                             var head = `
                                 <style>
-                                    table, td ,th {
-                                        border : 2px solid gray;
-                                        border-collapse : collapse;
-                                        padding : 15px;
-                                    }
+                                    
                                     .box{
                                         float: left;
                                         border: 1px solid black;
@@ -65,7 +61,7 @@ router.post('/search', function (request, response) {
                         
                                     #card #li:hover .card-body {
                                         opacity: 1;
-                                        transform: translateY(-210px);
+                                        transform: translateY(-256px);
                                     }
                         
                                     #card .card-body h5 {
@@ -74,8 +70,10 @@ router.post('/search', function (request, response) {
                                     }
                         
                                     .content{
-                                        width : 100%; 
-                                        height : 850px;
+                                        display : flex;
+                                        justify-content : flex-start;
+                                        flex-wrap : wrap;
+                                        width: 100%;     
                                     }
                                 </style>
                             `;
@@ -102,6 +100,7 @@ router.post('/search', function (request, response) {
                                                 </a>
                                             </div>
                                         </div>
+                                        
                                     `;
                                 }
                             }
@@ -128,7 +127,6 @@ router.post('/search', function (request, response) {
                                                 </a>
                                             </div>
                                         </div>
-                                        <br>
                                     `;
                                 }
                             }
@@ -156,7 +154,6 @@ router.post('/search', function (request, response) {
                                                 </a>
                                             </div>
                                         </div>
-                                        <br>
                                     `;
                                 }
                             }
@@ -184,35 +181,35 @@ router.post('/search', function (request, response) {
                                                 </a>
                                             </div>
                                         </div>
-                                    <br>
                                     `;
                                 }
                             }
                             var list_rec = '';
                             if(rec.length === 0){
                                 list_rec += `
-                                    <th><h3>제품추천</h3></th>
-                                    <tr><td><h4>'${post.search}'에 대한 검색 결과가 없습니다.</h4></td></tr>
+                                <br>    
+                                    <tr><td><h4>'${post.search}'에 대한 검색 결과가 없습니다.</h4></td></tr> 
+                                <br>
                                 `;
                             } else{
                                 list_rec += `
-                                <tr style = "background-color : #EEEEEE;">
-                                    <td width = "10%"><b>No</b></td>
-                                    <td width = "45%"><b>제목</b>.</td>
-                                    <td width = "25%"><b>작성자</b></td>
-                                    <td width = "20%"><b>작성일</b></td>
+                                <tr style = "background-color : #EEEEEE; border : 2px solid gray; border-collapse : collapse; padding : 15px;">
+                                    <td width = "10%" style = "background-color : #EEEEEE; border : 2px solid gray; border-collapse : collapse; padding : 15px;"><b>No</b></td>
+                                    <td width = "45%" style = "background-color : #EEEEEE; border : 2px solid gray; border-collapse : collapse; padding : 15px;"><b>제목</b>.</td>
+                                    <td width = "25%" style = "background-color : #EEEEEE; border : 2px solid gray; border-collapse : collapse; padding : 15px;"><b>작성자</b></td>
+                                    <td width = "20%" style = "background-color : #EEEEEE; border : 2px solid gray; border-collapse : collapse; padding : 15px;"><b>작성일</b></td>
                                 </tr>
                                 
                                 `;
                                 for(i = 0; i < rec.length; i++) {
                                     list_rec += `
-                                            <tr>
-                                                <td>${rec[i].id}</td>
-                                                <td>
+                                            <tr style = "border : 2px solid gray; border-collapse : collapse; padding : 15px;">
+                                                <td style = "border : 2px solid gray; border-collapse : collapse; padding : 15px;">${rec[i].id}</td>
+                                                <td style = "border : 2px solid gray; border-collapse : collapse; padding : 15px;">
                                                     <a href="/community/recommendation/page/${rec[i].id}">${rec[i].title}</a>
                                                 </td>
-                                                <td>${rec[i].writer}</td>
-                                                <td>${rec[i].date}</td>
+                                                <td style = "border : 2px solid gray; border-collapse : collapse; padding : 15px;">${rec[i].writer}</td>
+                                                <td style = "border : 2px solid gray; border-collapse : collapse; padding : 15px;">${rec[i].date}</td>
                                             </tr>
                                     `;
                                 }
@@ -221,36 +218,35 @@ router.post('/search', function (request, response) {
                             <main class="flex-shrink-0">
                                 <div class="container">
                                 <br><br>
+                                <h3><b>일회용 월경대</b></h3><br>
                                     <div class="content">
-                                            <h3><b>일회용 월경대</b></h3>
                                             ${list_pad}
                                     </div>
-                                    
                                     <br><hr><br>
+                                    <h3><b>면 월경대</b></h3><br>
                                     <div class="content">
-                                            <h3><b>면 월경대</b></h3>
                                             ${list_cpad}
                                     </div>
                                     <br><hr><br>
+                                    <h3><b>월경컵</b></h3><br>
                                     <div class="content">
-                                            <h3><b>월경컵</b></h3>
                                             ${list_cup}
                                     </div>
                                     <br><hr><br>
-                                    <div class="content" >
-                                            <h3><b>탐폰</b></h3>
+                                    <h3><b>탐폰</b></h3><br>
+                                    <div class="content">     
                                             ${list_tampon}
                                     </div>
                                    
                                     <br><hr><br>
-                                    <div class="content">
+                                    <div>
                                         <div>
+                                        <img src="images/mypage2.png" style = "float:left;"  width="380px">
                                             <center>
-                                            <br>
-                                            <img src="images/mypage2.png" style = "float:left; margin-left : 2%;"  width="380px">
-                                            <table width = "95%">
+                                            <table width = "100%" sytle = "border : 2px solid gray; border-collapse : collapse; padding : 15px;">
                                                 ${list_rec}
                                             </table>
+                                            <br><br><br>
                                             </center>
                                         </div>
                                     </div>

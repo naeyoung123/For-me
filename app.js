@@ -54,6 +54,7 @@ app.use(session({
   resave: false,
   saveUninitialize: true 
 }));
+
 app.use('/', mainRouter);
 app.use(express.static('public'));
 app.get('/login', loginRouter);
