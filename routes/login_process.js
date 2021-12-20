@@ -19,7 +19,7 @@ router.post('/login_process', function (request, response) {
                 request.session.email = email;
                 request.session.nickname = res[0].nickname;
                 request.session.save(function() {
-                    response.redirect(`/store/pad`);
+                    response.redirect(`/`);
                 });
             } else {
                 response.send('Who?');
