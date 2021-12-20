@@ -4,7 +4,7 @@ var template = require('../../lib/template.js');
 const db = require('../../db.js');
 var qs = require('querystring');
 
-router.post('/community/create_req_process', function (request, response) {
+router.post('/community/requirement/create_process', function (request, response) {
     var body = ``;
     request.on('data', function(data){
         body = body + data;
@@ -14,7 +14,7 @@ router.post('/community/create_req_process', function (request, response) {
         var title = post.title;
         var content = post.content;
         var date = new Date();
-        var writer = 'donut@forme.com';   //로그인한 사용자로 수정 필요!!!!
+        var writer = request.session.email;
         db.query(`INSERT INTO requirement (title, content, date, writer) VALUES(?, ?, ?, ?)`, [title, content, date, writer], function(err, res){
             if(err) throw err;
             response.writeHead(302, {Location: `/community/requirement`});

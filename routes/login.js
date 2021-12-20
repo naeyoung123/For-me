@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../lib/template.js');
+var author = require('../lib/author.js');
 
 router.get('/login', function (request, response) {
     var title = '로그인';
@@ -159,13 +160,12 @@ router.get('/login', function (request, response) {
             <div class="container">
                 <div className="signupBox">
                     <p id="signupLogo"><strong>Log In</strong></p>
-                    <form className="inputField" method="post" action="/login_process">
+                    <form action="/login_process" method="post" className="inputField">
                         <p id="emailpara">Email</p>
-                        <input type="email" class="input-type" name="email" placeholder="email" />
+                        <input type="email" name="email" class="input-type" placeholder="email" />
                         <br>
-    
                         <p id="pwpara">Password</p>
-                        <input type="password" class="input-type" name="password" placeholder="password" />
+                        <input type="password" name="password" class="input-type" placeholder="password" />
                         <br />
                         <button type="submit" id="signupSubmitBtn" onClick=login()>Log In</button>
     
@@ -176,7 +176,7 @@ router.get('/login', function (request, response) {
                 </div>
             </div>
         </main>`;
-    var html = template.HTML(title, head, body,authStatusUI);
+    var html = template.HTML(title, head, body, author.statusUI(request, response));
     response.send(html);
 });
 

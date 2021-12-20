@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../lib/template.js');
+var author = require('../lib/author.js');
 
 router.get('/', function (request, response) {
     var title = 'For me 나를 위해';
@@ -19,7 +20,7 @@ router.get('/', function (request, response) {
         <br> <br>
     </div>
 
-    <div style="background-color: #EEEEEE;">
+    <div style="background-color: rgb(248,238,254);">
          <center>
             <br><br>
             <a href="recommend">
@@ -319,7 +320,7 @@ router.get('/', function (request, response) {
     </div>
     </main>`;
 
-    var html = template.HTML(title, head, body,authStatusUI);
+    var html = template.HTML(title, head, body, author.statusUI(request, response));
     response.send(html);
 });
 

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var template = require('../../lib/template.js');
+var author = require('../../lib/author.js');
 
 router.get('/store/merit', function (request, response) {
     var title = '제품별장단점';
@@ -33,7 +34,7 @@ router.get('/store/merit', function (request, response) {
     <br><br>
     </main>
 `;
-    var html = template.HTML(title, head, body);
+    var html = template.HTML(title, head, body, author.statusUI(request, response));
     response.send(html);
 });
 

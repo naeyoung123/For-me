@@ -4,11 +4,11 @@ const url = require('url');
 const path = require('path');
 const db = require('./db.js');
 const session = require('express-session');
-const cookie = require('cookie');
+
 const mainRouter = require('./routes/main.js');
 const loginRouter = require('./routes/login.js');
 const loginProcessRouter = require('./routes/login_process.js');
-const logoutProcessRouter = require('./routes/logout_process.js')
+const logoutProcessRouter = require('./routes/logout_process.js');
 const signupRouter = require('./routes/signup.js');
 const signupProcessRouter = require('./routes/signup_process.js');
 
@@ -28,6 +28,10 @@ const cupRouter = require('./routes/store/cup.js');
 const padRouter = require('./routes/store/pad.js');
 const tamponRouter = require('./routes/store/tampon.js');
 const meritRouter = require('./routes/store/merit.js');
+const likePadRouter = require('./routes/store/pad_like_process.js');
+const likeCpadRouter = require('./routes/store/cpad_like_process.js');
+const likeCupRouter = require('./routes/store/cup_like_process.js');
+const likeTamponRouter = require('./routes/store/tampon_like_process.js');
 
 const recommendationRouter = require('./routes/community/main_rec.js');
 const createRecRouter = require('./routes/community/create_rec.js');
@@ -45,18 +49,17 @@ const express = require('express');
 const app = express();
 
 app.use(express.static('public'));
-app.use(session({
-  key:'my key',
-  secret: 'secret',
-  resave: false,
-  saveUninitialize: true,
-  cookie:{
-    maxAge: 60 * 60 * 24 * 1
-  }
-}));
 
+app.use(session({
+  secret:'my key',
+  resave: false,
+  saveUninitialize: true 
+}));
 app.use('/', mainRouter);
+app.use(express.static('public'));
 app.get('/login', loginRouter);
+app.post('/login_process',loginProcessRouter);
+app.get('/logout_process',logoutProcessRouter);
 app.get('/signup', signupRouter);
 app.post('/signup_process', signupProcessRouter);
 app.post('/login_process',loginProcessRouter);
@@ -78,6 +81,10 @@ app.get('/store/cup', cupRouter);
 app.get('/store/pad', padRouter);
 app.get('/store/tampon', tamponRouter);
 app.get('/store/merit', meritRouter);
+app.post('/store/like_process/pad', likePadRouter);
+app.post('/store/like_process/cpad', likeCpadRouter);
+app.post('/store/like_process/cup', likeCupRouter);
+app.post('/store/like_process/tampon', likeTamponRouter);
 
 app.get('/community/recommendation', recommendationRouter);
 app.get('/community/recommendation/create', createRecRouter);

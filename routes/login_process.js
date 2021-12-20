@@ -3,8 +3,6 @@ var router = express.Router();
 var template = require('../lib/template.js');
 const db = require('../db.js');
 var qs = require('querystring');
-const { is } = require('type-is');
-
 
 router.post('/login_process', function (request, response) {
     var body = ``;
@@ -15,46 +13,23 @@ router.post('/login_process', function (request, response) {
         var post = qs.parse(body);
         var email = post.email;
         var password = post.password;
-        
-        var col = 'email';
-        var tablename = 'user';
-        var isOwner = false;
-        var authStatusUI = '<a class="nav-link" href="/login">로그인</a>';
-        
-        
-            db.query('SELECT ?? FROM ?? WHERE email = ? and password = ?', [col, tablename, email, password], function(err, data){
-                if(err) throw err;
-                if(!data[0])
-                    return response.redirect('/login');
-
-                var user = data[0];
-                
-                if(err) throw err;
-                if(email == data[0].email || password == data[0].password){
-                    request.session.email = user.email;
-                    isOwner = true;
-                    request.session.save(function(){
-                    
-                        
-                        if(isOwner === true){//로그인 된 경우라면
-                            
-                            authStatusUI = '<a class="nav-link" href="/logout_process">로그아웃</a>';
-                        }
-                        return response.redirect('/');
-                        
+        db.query(`SELECT password, nickname FROM user WHERE email=?`, [email], function(err, res){
+            if (res[0] == undefined) {
+                response.end(`/not our user`);
+            } else{
+                if(res[0].password == password){
+                    request.session.is_logined = true;
+                    request.session.email = email;
+                    request.session.nickname = res[0].nickname;
+                    request.session.save(function() {
+                        response.redirect(`/`);
                     });
-                   
-                        //console.log(isOwner);
+                } else {
+                    response.end(`/wrong password`);
                 }
-                else {
-                    return response.redirect('/login')
-                }
-                
-            
-            });
-
+            }
+        });
     });
 });
-
 
 module.exports = router;
