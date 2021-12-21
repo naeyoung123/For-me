@@ -102,7 +102,7 @@ router.get('/mypage', function (request, response) {
                     for(i=0; i < res1.length; i++) {
                         list_rec += `
                                 <tr>
-                                    <td>${i}</td>
+                                    <td>${i+1}</td>
                                     <td>
                                         ${res1[i].title}
                                     </td>
@@ -115,7 +115,7 @@ router.get('/mypage', function (request, response) {
                     for(i=0; i < com.length; i++) {
                         list_com += `
                                 <tr>
-                                    <td>${i}</td>
+                                    <td>${i+1}</td>
                                     <td>
                                         ${com[i].content}
                                     </td>
@@ -133,7 +133,7 @@ router.get('/mypage', function (request, response) {
                     for(i=0; i < res2.length; i++) {
                         list_req += `
                                 <tr>
-                                    <td>${i}</td>
+                                    <td>${i+1}</td>
                                     <td>${res2[i].title}</td>
                                     <td>${res2[i].writer}</td>
                                     <td>${res2[i].date}</td>
