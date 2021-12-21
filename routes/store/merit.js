@@ -14,21 +14,21 @@ router.get('/store/merit', function (request, response) {
     <div class="row">
         <div class="col-md-6" style = "border : solid gray 1px; "> 
             <img src='/images/pad.png' alt="일회용 월경대" width = "100%">
-            <center><a href="pad"><button type="button" class="btn btn-secondary">일회용 월경대 제품 보러가기</button></a></center><br>
+            <center><a href="/store/pad/1"><button type="button" class="btn btn-secondary">일회용 월경대 제품 보러가기</button></a></center><br>
             </div>
         <div class="col-md-6" style = "border : solid gray 1px;"> 
             <img src='/images/cpad.png' alt="면 월경대" width = "100%" >
-            <center><a href="cpad"><button type="button" class="btn btn-secondary">면 월경대 제품 보러가기</button></a></center><br>
+            <center><a href="/store/cpad/1"><button type="button" class="btn btn-secondary">면 월경대 제품 보러가기</button></a></center><br>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6" style = "border : solid gray 1px;"> 
             <img src='/images/cup.png' alt="월경컵" width = "100%" >
-            <center><a href="cup"><button type="button" class="btn btn-secondary">월경컵 제품 보러가기</button></a></center><br>
+            <center><a href="/store/cup/1"><button type="button" class="btn btn-secondary">월경컵 제품 보러가기</button></a></center><br>
         </div>
         <div class="col-md-6" style = "border : solid gray 1px;"> 
             <img src='/images/tampon.png' alt="탐폰" width = "100%" >
-            <center><a href="tampon"><button type="button" class="btn btn-secondary">탐폰 제품 보러가기</button></a></center><br>
+            <center><a href="/store/tampon/1"><button type="button" class="btn btn-secondary">탐폰 제품 보러가기</button></a></center><br>
         </div>
     </div>
     <br><br>
