@@ -21,7 +21,7 @@ router.get('/store/tampon/:listId', function (request, response) {
         let offset = (cursor - 1) * list_size;
         let limit = cursor * list_size;
 
-        db.query(`SELECT * FROM tampon LIMIT ?, ?`, [offset, limit], function(err, res){
+        db.query(`SELECT * FROM tampon LIMIT ?, ?`, [offset, list_size], function(err, res){
         var title = '탐폰';
         var head = `
             <style>

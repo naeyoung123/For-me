@@ -19,11 +19,8 @@ router.get('/store/cpad/:listId', function (request, response) {
         if (!list_total || list_total<= 0) 
             list_total = bottom
         let offset = (cursor - 1) * list_size;
-        let limit = cursor * list_size;
-        console.log(offset)
-        console.log(limit)
 
-        db.query(`SELECT * FROM cpad LIMIT ?, ?`, [offset, limit], function(err, res){
+        db.query(`SELECT * FROM cpad LIMIT ?, ?`, [offset, list_size], function(err, res){
             console.log(res)
         var title = '면 월경대';
         var head = `

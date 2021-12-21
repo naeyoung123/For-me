@@ -21,7 +21,7 @@ router.get('/store/cup/:listId', function (request, response) {
         let offset = (cursor - 1) * list_size;
         let limit = cursor * list_size;
 
-        db.query(`SELECT * FROM cup LIMIT ?, ?`, [offset, limit], function(err, res){
+        db.query(`SELECT * FROM cup LIMIT ?, ?`, [offset, list_size], function(err, res){
         var title = '월경컵';
     var head = `
     <style>
