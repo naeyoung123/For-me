@@ -12,7 +12,7 @@ router.post('/mypage/delete_com_process', function (request, response) {
     request.on('end', function(){
         var post = qs.parse(body);
         var id = post.id;
-        db.query(`UPDATE comment_rec SET content=? WHERE id=?`, ['삭제된 댓글입니다.', id], function(err, res){
+        db.query(`DELETE FROM comment_rec WHERE id=?`, [id], function(err, res){
             if(err) throw err;
             response.writeHead(302, {Location: `/mypage`});
             response.end();
