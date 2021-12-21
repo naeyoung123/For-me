@@ -93,7 +93,7 @@ router.get('/community/requirement/list/:listId', function (request, response) {
                         <br>
                         <a href="/community/requirement/create">
                             <button id = "content-btn" type="button" class="btn">글쓰기</button>
-                        </a>
+                        </a><br><br>
                 </center>
                 </div>
             </main>
