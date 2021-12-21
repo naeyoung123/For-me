@@ -3,9 +3,25 @@ const db = require('../../db.js');
 var router = express.Router();
 var template = require('../../lib/template.js');
 var author = require('../../lib/author.js');
+var path = require('path');
 
-router.get('/store/pad', function (request, response) {
-    db.query(`SELECT * FROM pad`, function(err, res){
+router.get('/store/pad/:listId', function (request, response) {
+    db.query(`SELECT * FROM pad`, function(err, count){
+        var cursor = path.parse(request.params.listId).base; // 현재페이지
+        let list_size = 12; // 화면에서 보여줄 크기
+        let bottom = 10; // 한번에 보이는 a태그 갯수
+        let list_total = Math.ceil(count.length / list_size); // a태그 총 갯수
+        let first = cursor - cursor % bottom + 1;
+        let last = cursor - cursor % bottom + bottom;
+        if(last > list_total) last = list_total;
+        if (!cursor || cursor <= 0) 
+            cursor = bottom
+        if (!list_total || list_total<= 0) 
+            list_total = bottom
+        let offset = (cursor - 1) * list_size;
+        let limit = cursor * list_size;
+
+        db.query(`SELECT * FROM pad LIMIT ?, ?`, [offset, limit], function(err, res){
         var title = '일회용 월경컵';
         var head = `
         <style>
@@ -88,7 +104,12 @@ router.get('/store/pad', function (request, response) {
                     </div>
                 `; 
             }
-
+            var paging = '';
+            for(i = first; i < last + 1; i++){
+                paging += `
+                    <li class="page-item"><a class="page-link" href="/store/pad/${i}">${i}</a></li>
+                `
+            }  
 
     var body = `
     <main class="flex-shrink-0">
@@ -104,14 +125,12 @@ router.get('/store/pad', function (request, response) {
             </div>
             
             <div style= "text-align: center; display:inline-block;"> 
-			    <ul class="pagination ">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </div>
+                            <ul class="pagination ">
+                                <li class="page-item"><a class="page-link" href="/community/cup/${cursor-1}">Previous</a></li>
+                                ${paging}
+                                <li class="page-item"><a class="page-link" href="/community/cup/${cursor+1}">Next</a></li>
+                            </ul>
+                        </div>
         </div>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -120,7 +139,7 @@ router.get('/store/pad', function (request, response) {
 `;
     var html = template.HTML(title, head, body, author.statusUI(request, response));
     response.send(html);
-    })
+    })})
 });
 
 module.exports = router;

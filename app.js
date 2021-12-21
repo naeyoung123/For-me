@@ -95,22 +95,22 @@ app.post('/mypage/like_process/cup', mypageCupLikeRouter);
 app.post('/mypage/like_process/tampon', mypageTamponLikeRouter);
 app.post('/mypage/delete_com_process', mypageComDeleteProcessRouter);
 
-app.get('/store/cpad', cpadRouter);
-app.get('/store/cup', cupRouter);
-app.get('/store/pad', padRouter);
-app.get('/store/tampon', tamponRouter);
+app.get('/store/cpad/:listId', cpadRouter);
+app.get('/store/cup/:listId', cupRouter);
+app.get('/store/pad/:listId', padRouter);
+app.get('/store/tampon/:listId', tamponRouter);
 app.get('/store/merit', meritRouter);
 app.post('/store/like_process/pad', likePadRouter);
 app.post('/store/like_process/cpad', likeCpadRouter);
 app.post('/store/like_process/cup', likeCupRouter);
 app.post('/store/like_process/tampon', likeTamponRouter);
 
-app.get('/community/recommendation', recommendationRouter);
+app.get('/community/recommendation/list/:listId', recommendationRouter);
 app.get('/community/recommendation/create', createRecRouter);
 app.post('/community/recommendation/create_process', createRecProcessRouter);
 app.get('/community/recommendation/page/:pageId', recommendationPageRouter);
 app.post('/community/recommendation/page/:pageId/comment_process', recommendationCommentRouter);
-app.get('/community/requirement', requirementRouter);
+app.get('/community/requirement/list/:listId', requirementRouter);
 app.get('/community/requirement/create', createReqRouter);
 app.post('/community/requirement/create_process', createReqProcessRouter);
 app.get('/community/requirement/page/:pageId', requirementPageRouter);
