@@ -22,7 +22,7 @@ router.post('/community/requirement/create_process', function (request, response
         var writer = request.session.email;
         db.query(`INSERT INTO requirement (title, content, date, writer) VALUES(?, ?, ?, ?)`, [title, content, date, writer], function(err, res){
             if(err) throw err;
-            response.writeHead(302, {Location: `/community/requirement`});
+            response.writeHead(302, {Location: `/community/requirement/list/1`});
             response.end();
         });
     });
