@@ -22,13 +22,13 @@ router.post('/store/like_process/cpad', function (request, response) {
             if(res0.length == 0){
                 db.query(`INSERT INTO liked(store_id, user_id, type) VALUES(?, ?, ?)`, [id, user, 1], function(err1, res1){
                     if(err1) throw err1;
-                    response.writeHead(302, {Location: `/store/cpad`});
+                    response.writeHead(302, {Location: `/store/cpad/1`});
                     response.end();
                 });
             } else{
                 db.query(`DELETE FROM liked WHERE store_id=? and user_id=? and type=?`, [id, user, 1], function(err1, res1){
                     if(err1) throw err1;
-                    response.writeHead(302, {Location: `/store/cpad`});
+                    response.writeHead(302, {Location: `/store/cpad/1`});
                     response.end();
                 });
             }
