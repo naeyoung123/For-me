@@ -123,15 +123,22 @@ router.get('/store/tampon/:listId', function (request, response) {
                     <div class="content">  
                         ${list}
                     </div>
-                    
-                    <div style= "text-align: center; display:inline-block;"> 
+                    <br>
+                    <div class="row">
+                    <center>
+                        <div style= "text-align: center; display:inline-block;"> 
                             <ul class="pagination ">
                                 <li class="page-item"><a class="page-link" href="/community/tampon/${cursor-1}">Previous</a></li>
                                 ${paging}
                                 <li class="page-item"><a class="page-link" href="/community/tampon/${cursor+1}">Next</a></li>
                             </ul>
                         </div>
-                </div>
+                        </center>
+                    </div>
+                    </div>
+                    
+                    <br>
+
                 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

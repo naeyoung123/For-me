@@ -82,6 +82,7 @@ router.get('/community/recommendation/list/:listId', function (request, response
                             ${list}
                         </table>
                         <br>
+                        
                         <div style= "text-align: center; display:inline-block;"> 
                             <ul class="pagination ">
                                 <li class="page-item"><a class="page-link" href="/community/recommendation/list/${cursor-1}">Previous</a></li>
@@ -92,7 +93,7 @@ router.get('/community/recommendation/list/:listId', function (request, response
                         <br>
                         <a href="/community/recommendation/create">
                             <button id = "content-btn" type="button" class="btn">글쓰기</button>
-                        </a>
+                        </a><br><br>
                     </center>
                 </div>
             </main>
