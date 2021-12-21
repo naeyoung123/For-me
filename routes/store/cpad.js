@@ -3,9 +3,28 @@ const db = require('../../db.js');
 var router = express.Router();
 var template = require('../../lib/template.js');
 var author = require('../../lib/author.js');
+var path = require('path');
 
-router.get('/store/cpad', function (request, response) {
-    db.query(`SELECT * FROM cpad`, function(err, res){
+router.get('/store/cpad/:listId', function (request, response) {
+    db.query(`SELECT * FROM cpad`, function(err, count){
+        var cursor = path.parse(request.params.listId).base; // 현재페이지
+        let list_size = 12; // 화면에서 보여줄 크기
+        let bottom = 10; // 한번에 보이는 a태그 갯수
+        let list_total = Math.ceil(count.length / list_size); // a태그 총 갯수
+        let first = cursor - cursor % bottom + 1;
+        let last = cursor - cursor % bottom + bottom;
+        if(last > list_total) last = list_total;
+        if (!cursor || cursor <= 0) 
+            cursor = bottom
+        if (!list_total || list_total<= 0) 
+            list_total = bottom
+        let offset = (cursor - 1) * list_size;
+        let limit = cursor * list_size;
+        console.log(offset)
+        console.log(limit)
+
+        db.query(`SELECT * FROM cpad LIMIT ?, ?`, [offset, limit], function(err, res){
+            console.log(res)
         var title = '면 월경대';
         var head = `
         <style>
@@ -89,7 +108,12 @@ router.get('/store/cpad', function (request, response) {
                 `; 
             }
         
-                        
+            var paging = '';
+            for(i = first; i < last + 1; i++){
+                paging += `
+                    <li class="page-item"><a class="page-link" href="/store/cpad/${i}">${i}</a></li>
+                `
+            }       
             var body = `
                 <main class="flex-shrink-0">
                     <div class="container">
@@ -103,13 +127,12 @@ router.get('/store/cpad', function (request, response) {
                             ${list}
                         </div>
 
+                        <br>
                         <div style= "text-align: center; display:inline-block;"> 
-                      <ul class="pagination ">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            <ul class="pagination ">
+                                <li class="page-item"><a class="page-link" href="/store/cpad/${cursor-1}">Previous</a></li>
+                                ${paging}
+                                <li class="page-item"><a class="page-link" href="/store/cpad/${cursor+1}">Next</a></li>
                             </ul>
                         </div>
                     </div>
@@ -120,7 +143,8 @@ router.get('/store/cpad', function (request, response) {
             `;
         var html = template.HTML(title, head, body, author.statusUI(request, response));
         response.send(html);
-    })
+        });
+    });
 });
 
 module.exports = router;
