@@ -19,9 +19,8 @@ router.get('/store/pad/:listId', function (request, response) {
         if (!list_total || list_total<= 0) 
             list_total = bottom
         let offset = (cursor - 1) * list_size;
-        let limit = cursor * list_size;
 
-        db.query(`SELECT * FROM pad LIMIT ?, ?`, [offset, limit], function(err, res){
+        db.query(`SELECT * FROM pad LIMIT ?, ?`, [offset, list_size], function(err, res){
         var title = '일회용 월경컵';
         var head = `
         <style>
