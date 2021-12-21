@@ -131,9 +131,9 @@ router.get('/store/cup/:listId', function (request, response) {
 
                       <div style= "text-align: center; display:inline-block;"> 
                             <ul class="pagination ">
-                                <li class="page-item"><a class="page-link" href="/community/cup/${cursor-1}">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="/store/cup/${cursor-1}">Previous</a></li>
                                 ${paging}
-                                <li class="page-item"><a class="page-link" href="/community/cup/${cursor+1}">Next</a></li>
+                                <li class="page-item"><a class="page-link" href="/store/cup/${cursor+1}">Next</a></li>
                             </ul>
                         </div>
                   </div>

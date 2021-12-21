@@ -19,9 +19,8 @@ router.get('/community/requirement/list/:listId', function (request, response) {
         if (!list_total || list_total<= 0) 
             list_total = bottom
         let offset = (cursor - 1) * list_size;
-        let limit = cursor * list_size;
         
-        db.query(`SELECT * FROM requirement LEFT JOIN user ON requirement.writer = user.email LIMIT ?, ?`, [offset, limit], function (err, res) {
+        db.query(`SELECT * FROM requirement LEFT JOIN user ON requirement.writer = user.email LIMIT ?, ?`, [offset, list_size], function (err, res) {
             var title = 'FORME에게 바란다.';
             var head = `
                 <style>
@@ -85,9 +84,9 @@ router.get('/community/requirement/list/:listId', function (request, response) {
                     <br>
                         <div style= "text-align: center; display:inline-block;"> 
                             <ul class="pagination ">
-                                <li class="page-item"><a class="page-link" href="/community/recommendation/list/${cursor-1}">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="/community/requirement/list/${cursor-1}">Previous</a></li>
                                 ${paging}
-                                <li class="page-item"><a class="page-link" href="/community/recommendation/list/${cursor+1}">Next</a></li>
+                                <li class="page-item"><a class="page-link" href="/community/requirement/list/${cursor+1}">Next</a></li>
                             </ul>
                         </div>
                         <br>
