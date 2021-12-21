@@ -22,7 +22,7 @@ router.post('/community/recommendation/create_process', function (request, respo
         var writer = request.session.email;
         db.query(`INSERT INTO recommendation (title, content, date, writer) VALUES(?, ?, ?, ?)`, [title, content, date, writer], function(err, res){
             if(err) throw err;
-            response.writeHead(302, {Location: `/community/recommendation`});
+            response.writeHead(302, {Location: `/community/recommendation/list/1`});
             response.end();
         });
     });
